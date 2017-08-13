@@ -1,5 +1,5 @@
 import * as React from 'react'
-import ActiveLink from '../containers/ActiveLink'
+import ActiveLink from '../containers/active-link'
 
 const Navigation = () => {
   return (

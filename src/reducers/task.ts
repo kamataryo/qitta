@@ -1,16 +1,32 @@
 import { Action, Reducer } from 'redux'
 import * as update from 'immutability-helper'
 
+import initialData from 'data/tasks-dummy'
+
+export interface Reaction {
+  value      : 'good'|'thanks'|'plesure'|'help'|'emergency'|'sad',
+  performedBy : string,
+}
+
+export interface Task {
+  title            : string,
+  done             : boolean,
+  createdAt        : Date,
+  createdBy        : string,
+  finishedAt       : Date|null,
+  whoIsResponsible : string|null,
+  finishedBy       : string|null,
+  preReactions     : Reaction[],
+  postReactions    : Reaction[],
+}
+
 export interface TaskState {
-  data: string[],
+  data: Task[],
 }
 
 export const initialState: TaskState = {
-  data: [
-    'ご飯',
-    '餌やり',
-    '水交換',
-  ],
+  // TODO: get via API
+  data: initialData
 }
 
 export enum TaskActionTypes {

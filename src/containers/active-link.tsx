@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import { RootState } from '../store'
-import ActiveLink, { OwnProps } from '../components/ActiveLink'
+import { RootState } from 'store'
+import ActiveLink, { OwnProps } from 'components/active-link'
 
 export interface StateProps {
   pathname: string,

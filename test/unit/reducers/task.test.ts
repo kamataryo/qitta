@@ -1,6 +1,6 @@
 import 'mocha'
 import { equal } from 'assert'
-import taskReducer, { TaskActionTypes } from '../../../src/reducers/task'
+import taskReducer, { TaskActionTypes } from 'reducers/task'
 
 describe('test count Reducer', () => {
   it('should add', () => {

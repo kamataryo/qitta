@@ -3,8 +3,8 @@ import * as React from 'react'
 import * as assert from 'power-assert'
 import configureStore from 'redux-mock-store'
 import { shallow } from 'enzyme'
-import ActiveLink from '../../../src/components/ActiveLink'
-import ActiveLinkContainer from '../../../src/containers/ActiveLink'
+import ActiveLink from 'components/active-link'
+import ActiveLinkContainer from 'containers/active-link'
 
 const middlewares: any[] = []
 const mockStore = configureStore(middlewares)

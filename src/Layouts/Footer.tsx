@@ -1,5 +1,5 @@
 import * as React from 'react'
-import FooterNavigation from '../components/FooterNavigation'
+import FooterNavigation from '../components/footer-navigation'
 
 export default () => {
   return (

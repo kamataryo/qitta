@@ -4,12 +4,12 @@ import rootStore, { history } from '../store'
 import { Route } from 'react-router'
 import { ConnectedRouter } from 'react-router-redux'
 
-import Header from '../Layouts/Header'
-import TaskView from '../routes/TaskView'
-import GroupView from '../routes/GroupView'
-import CatView from '../routes/CatView'
-import ProfileView from '../routes/ProfileView'
-import Footer from '../Layouts/Footer'
+import Header from 'layouts/header'
+import TaskView from 'routes/task-view'
+import GroupView from 'routes/group-view'
+import CatView from 'routes/cat-view'
+import ProfileView from 'routes/profile-view'
+import Footer from 'layouts/footer'
 
 const Routes = () => {
   return (

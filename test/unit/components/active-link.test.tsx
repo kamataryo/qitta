@@ -2,7 +2,7 @@ import 'mocha'
 import * as React from 'react'
 import * as assert from 'power-assert'
 import { shallow } from 'enzyme'
-import ActiveLink from '../../../src/components/ActiveLink'
+import ActiveLink from 'components/active-link'
 import { Link } from 'react-router-dom'
 
 describe('Test of ActiveLink component', () => {
