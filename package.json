@@ -1,7 +1,7 @@
 {
   "name": "qitta",
   "version": "0.0.0",
-  "description": "",
+  "description": "ねこ世話アプリケーション qitta のクライアントです。",
   "main": "index.js",
   "scripts": {
     "build": "webpack -p",
