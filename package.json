@@ -1,0 +1,94 @@
+{
+  "name": "qitta",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -p",
+    "start": "webpack-dev-server --progress --colors --inline --watch",
+    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}' && tsc -p ./ --noEmit",
+    "test": "cross-env NODE_ENV=test NODE_PATH=src:test mocha",
+    "coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text-lcov npm test",
+    "__deploykey_gen": "ssh-keygen -t rsa -b 4096 -C \"$(git config user.email)\" -f ./.travis_rsa -N ''",
+    "__encrypt_deploykey": "travis encrypt-file ./.travis_rsa --add"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kamataryo/qitta.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kamataryo/qitta/issues"
+  },
+  "homepage": "https://github.com/kamataryo/qitta#readme",
+  "nyc": {
+    "include": [
+      "src/*.ts",
+      "src/*.tsx",
+      "src/**/*.ts",
+      "src/**/*.tsx"
+    ],
+    "extensions": [
+      ".ts",
+      ".tsx"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "json",
+      "html"
+    ],
+    "all": true
+  },
+  "dependencies": {
+    "enzyme": "^2.9.1",
+    "history": "^4.6.3",
+    "immutability-helper": "^2.2.3",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-ja-date-picker": "^2.2.2",
+    "react-redux": "^5.0.5",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
+    "react-router-redux": "^5.0.0-alpha.6",
+    "redux": "^3.7.1"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.0.1",
+    "@types/enzyme": "^2.8.2",
+    "@types/immutability-helper": "^2.0.15",
+    "@types/mocha": "^2.2.41",
+    "@types/node": "^8.0.9",
+    "@types/power-assert": "^1.4.29",
+    "@types/react": "^15.0.35",
+    "@types/react-dom": "^15.5.1",
+    "@types/react-hot-loader": "^3.0.3",
+    "@types/react-redux": "^4.4.45",
+    "@types/react-router": "^4.0.13",
+    "@types/react-router-dom": "^4.0.6",
+    "@types/react-router-redux": "^5.0.3",
+    "@types/redux-mock-store": "0.0.9",
+    "@types/webpack-env": "^1.13.0",
+    "chai": "^4.1.0",
+    "cross-env": "^5.0.1",
+    "html-webpack-plugin": "^2.29.0",
+    "intelli-espower-loader": "^1.0.1",
+    "lcov-parse": "^1.0.0",
+    "mocha": "^3.4.2",
+    "nyc": "^11.0.3",
+    "power-assert": "^1.4.4",
+    "react-hot-loader": "^3.0.0-beta.7",
+    "react-test-renderer": "^15.6.1",
+    "redux-mock-store": "^1.2.3",
+    "ts-loader": "^2.2.2",
+    "ts-node": "^3.2.0",
+    "tslint": "^5.5.0",
+    "tslint-react": "^3.0.0",
+    "typescript": "^2.4.1",
+    "typescript-eslint-parser": "^3.0.0",
+    "webpack": "^3.1.0",
+    "webpack-dev-server": "^2.5.1"
+  }
+}
