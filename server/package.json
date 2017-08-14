@@ -5,8 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "start": "tsc -w",
-    "serve": "nodemon dist/index.js",
+    "start": "./.bin/start.sh",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}' && tsc -p ./ --noEmit",
     "test": "cross-env NODE_ENV=test NODE_PATH=src:test mocha",
     "__deploykey_gen": "ssh-keygen -t rsa -b 4096 -C \"$(git config user.email)\" -f ./.travis_rsa -N ''",

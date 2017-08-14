@@ -6,8 +6,8 @@ const data: Userdoc[] = [
     password    : 'kamataryo',
     displayName : '鎌田りょ',
     isGroup     : false,
-    members     : [],
     cats        : [2001, 2002],
+    members     : [],
   },
   {
     username    : 'salamander',

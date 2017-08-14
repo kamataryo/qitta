@@ -12,12 +12,12 @@ mongoose.model('Cat', new Schema({
 }))
 
 mongoose.model('User', new Schema({
-  username    : Number,
+  username    : String,
   password    : String,
   displayName : String,
   isGroup     : Boolean,
-  members     : [String],
   cats        : [Number],
+  members     : [String],
 }))
 
 export const Cat  = mongoose.model('Cat')

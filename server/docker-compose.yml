@@ -1,0 +1,5 @@
+mongo:
+  image: mongo:latest
+  ports:
+    - "27017:27017"
+  container_name: qitta-dev_mongo-db

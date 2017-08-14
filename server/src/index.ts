@@ -19,5 +19,5 @@ app.get('/:user/cats', (req, res) => {
 })
 
 app.listen(3000, () => {
-  process.stdout.write('Server is listening...')
+  process.stdout.write('[application] Server is listening...')
 })
