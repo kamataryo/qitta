@@ -8,18 +8,10 @@ node_js:
 before_script:
   - npm install
   - npm run build
-  - pushd server
-  - npm install
-  - npm run build
-  - popd
 
 script:
   - npm run lint
   - npm test
-  - pushd server
-  - npm run lint
-  - npm test
-  - popd
 
 after_success:
   - openssl aes-256-cbc -K $encrypted_0e70068955a5_key -iv $encrypted_0e70068955a5_iv -in .travis_rsa.enc -out $HOME/.ssh/id_rsa -d
