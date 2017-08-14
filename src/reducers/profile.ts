@@ -3,12 +3,7 @@ import * as update from 'immutability-helper'
 
 import initialData from 'data/profile-dummy'
 
-import { User } from './group'
-
-export interface Profile extends User {
-  description? : string,
-  accessToken  : string,
-}
+import Profile from 'types/profile'
 
 export interface ProfileState {
   data: Profile,

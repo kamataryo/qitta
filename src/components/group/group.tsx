@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { Group as GroupObject } from 'reducers/group'
+import GroupObject from 'types/group'
+import User from 'types/user'
 
 interface OwnProps {
   value: GroupObject,
@@ -13,7 +14,7 @@ const Group = (props: OwnProps) => {
     <div className={ 'group' }>
       <h3>{ group.displayName }</h3>
       <ul className={ 'members' }>
-        { group.members.map(user => (
+        { group.members.map((user: User) => (
           <li key={ `${group.slug}-${user.slug}` }>
             <span>{ user.displayName }</span>
           </li>

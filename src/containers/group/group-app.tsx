@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { RootState } from 'store'
 import GroupApp, { OwnProps } from 'components/group/group-app'
-import { Group } from 'reducers/group'
+import Group from 'types/group'
 
 export interface StateProps {
   groups: Group[],

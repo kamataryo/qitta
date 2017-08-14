@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { RootState } from 'store'
 import TaskApp, { OwnProps } from 'components/task/task-app'
-import { Task } from 'reducers/task'
+import Task from 'types/task'
 
 export interface StateProps {
   tasks: Task[],

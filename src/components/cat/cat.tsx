@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Cat as CatObject } from 'reducers/cat'
+import CatObject from 'types/cat'
 
 interface OwnProps {
   value: CatObject,

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { RootState } from 'store'
 import CatApp, { OwnProps } from 'components/cat/cat-app'
-import { Cat } from 'reducers/cat'
+import Cat from 'types/cat'
 
 export interface StateProps {
   cats: Cat[],

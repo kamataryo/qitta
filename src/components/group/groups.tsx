@@ -1,4 +1,4 @@
-import { Group as GroupObject } from 'reducers/group'
+import GroupObject from 'types/group'
 import * as React from 'react'
 import Group from './group'
 

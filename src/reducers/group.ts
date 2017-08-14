@@ -1,16 +1,7 @@
+import Group from 'types/group'
 import { Action, Reducer } from 'redux'
 // import * as update from 'immutability-helper'
-
 import initialData from 'data/groups-dummy'
-
-export interface User {
-  slug        : string,
-  displayName : string,
-}
-
-export interface Group extends User {
-  members: User[],
-}
 
 export interface GroupState {
   data: Group[],

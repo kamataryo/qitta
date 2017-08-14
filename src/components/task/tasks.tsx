@@ -1,4 +1,4 @@
-import { Task } from 'reducers/task'
+import Task from 'types/task'
 import * as React from 'react'
 import Reactions from 'components/reactions'
 import TaskControl from 'containers/task/task-control'

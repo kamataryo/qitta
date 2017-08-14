@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { RootState } from 'store'
 import ProfileApp, { OwnProps } from 'components/profile/profile-app'
-import { Profile } from 'reducers/profile'
+import Profile from 'types/profile'
 
 export interface StateProps {
   profile: Profile,

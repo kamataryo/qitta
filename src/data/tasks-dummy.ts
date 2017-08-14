@@ -1,4 +1,4 @@
-import { Task } from 'reducers/task'
+import Task from 'types/task'
 
 const data: Task[] = [
   {

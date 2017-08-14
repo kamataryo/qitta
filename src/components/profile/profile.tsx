@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Profile as ProfileObject } from 'reducers/profile'
+import ProfileObject from 'types/profile'
 
 interface OwnProps {
   value: ProfileObject,

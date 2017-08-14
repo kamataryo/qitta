@@ -1,4 +1,4 @@
-import { Profile as ProfileObject } from 'reducers/profile'
+import ProfileObject from 'types/profile'
 import * as React from 'react'
 import Profile from './profile'
 

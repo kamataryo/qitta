@@ -1,25 +1,7 @@
+import Task from 'types/task'
 import { Action, Reducer } from 'redux'
 import * as update from 'immutability-helper'
-
 import initialData from 'data/tasks-dummy'
-
-export interface Reaction {
-  value      : 'good'|'thanks'|'plesure'|'help'|'emergency'|'sad',
-  performedBy : string,
-}
-
-export interface Task {
-  id               : number,
-  title            : string,
-  done             : boolean,
-  createdAt        : Date,
-  createdBy        : string,
-  finishedAt       : Date|null,
-  whoIsResponsible : string|null,
-  finishedBy       : string|null,
-  preReactions     : Reaction[],
-  postReactions    : Reaction[],
-}
 
 export interface TaskState {
   data: Task[],

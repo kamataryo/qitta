@@ -1,4 +1,4 @@
-import { Cat } from 'reducers/cat'
+import Cat from 'types/cat'
 import * as React from 'react'
 import Cats from './cats'
 
