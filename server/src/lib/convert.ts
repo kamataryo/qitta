@@ -4,7 +4,12 @@ const convert = (obj: any) => {
 
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
-      result[key] = obj[key].constructor
+      const value = obj[key]
+      if (Array.isArray(value) && value.length > 0) {
+        result[key] = [value[0].constructor]
+      } else {
+        result[key] = value.constructor
+      }
     }
   }
   return result

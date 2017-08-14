@@ -4,6 +4,8 @@ const Schema = mongoose.Schema
 // Use global Promise
 // mongoose.Promise = global.Promise
 
+// TODO I want to check those types with lib/convert function
+
 mongoose.model('Cat', new Schema({
   id   : Number,
   name : String,

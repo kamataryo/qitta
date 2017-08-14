@@ -8,11 +8,13 @@ describe('test of convert', () => {
       a: 'aaa',
       b: true,
       c: 1,
+      d: [1, 2],
     })
     expect(result).to.deep.equal({
       a: String,
       b: Boolean,
       c: Number,
+      d: [Number],
     })
   })
 })
