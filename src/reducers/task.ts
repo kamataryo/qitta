@@ -9,6 +9,7 @@ export interface Reaction {
 }
 
 export interface Task {
+  id               : number,
   title            : string,
   done             : boolean,
   createdAt        : Date,
@@ -26,12 +27,13 @@ export interface TaskState {
 
 export const initialState: TaskState = {
   // TODO: get via API
-  data: initialData
+  data: initialData,
 }
 
 export enum TaskActionTypes {
   Add    = 'TASK.ADD',
   Delete = 'TASK.DELETE',
+  Done   = 'TASK.DONE',
 }
 
 export interface TaskAction extends Action {
@@ -43,7 +45,7 @@ export interface TaskReducer<T> extends Reducer<T> {
   (State: TaskState, Action: TaskAction ): TaskState
 }
 
-const countReducer: TaskReducer<TaskState> = (state: TaskState = initialState, action: TaskAction): TaskState => {
+const taskReducer: TaskReducer<TaskState> = (state: TaskState = initialState, action: TaskAction): TaskState => {
 
   const { type, payload } = action
 
@@ -54,9 +56,17 @@ const countReducer: TaskReducer<TaskState> = (state: TaskState = initialState, a
     case TaskActionTypes.Delete:
       return update(state, { data: { $splice: [payload.index, 1] } })
 
+    case TaskActionTypes.Done:
+      const index = state.data.map(task => task.id).indexOf(payload.taskId)
+      if (index === -1) {
+        return state
+      } else {
+        return update(state, { data: { [index]: { done: { $set: payload.done } } } })
+      }
+
     default:
       return state
   }
 }
 
-export default countReducer
+export default taskReducer

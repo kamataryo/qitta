@@ -1,7 +1,10 @@
-# Qitta: ねこ世話アプリケーション
+# QITTA | ソーシャルねこケアアプリ
 
 [![Linux Build Status](https://travis-ci.org/kamataryo/qitta.svg?branch=master)](https://travis-ci.org/kamataryo/qitta)
 [![Windows Build status](https://ci.appveyor.com/api/projects/status/hndrdtmd5jim0d7o?svg=true)](https://ci.appveyor.com/project/kamataryo/qitta)
+
+ねこのお世話をサポートするアプリです。
+このアプリは開発中です。
 
 [DEMO](http://qitta.biwako.io)
 

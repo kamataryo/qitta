@@ -3,7 +3,7 @@ import * as React from 'react'
 export default () => {
   return (
     <header>
-      <h1>qitta</h1>
+      <h1>{ 'QITTA | ソーシャルねこケアアプリケーション' }</h1>
     </header>
   )
 }

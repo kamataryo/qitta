@@ -6,9 +6,11 @@
   ],
   "jsRules": {},
   "rules": {
+    "arrow-parens": [true, "ban-single-arg-parens"],
     "interface-name": [true, "never-prefix"],
     "jsx-boolean-value": [true, "never"],
     "jsx-curly-spacing": [true, "always"],
+    "jsx-no-multiline-js": false,
     "max-line-length": false,
     "member-ordering": false,
     "no-empty-interface": false,

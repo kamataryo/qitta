@@ -1,5 +1,5 @@
 import 'mocha'
-import { equal } from 'assert'
+import { expect } from 'chai'
 import taskReducer, { TaskActionTypes } from 'reducers/task'
 
 describe('test count Reducer', () => {
@@ -7,6 +7,6 @@ describe('test count Reducer', () => {
     const oldState = { data: [] }
     const action = { type: TaskActionTypes.Add, payload: { task: 'aaa' }  }
     const newState = taskReducer(oldState, action)
-    equal(newState.data[0], 'aaa')
+    expect(newState.data[0]).to.equal('aaa')
   })
 })

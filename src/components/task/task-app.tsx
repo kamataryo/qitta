@@ -1,9 +1,9 @@
+import { Task } from 'reducers/task'
 import * as React from 'react'
 import Tasks from './tasks'
-import { Task } from 'reducers/task'
 
 export interface OwnProps {
-  tasks: Task[]
+  tasks: Task[],
 }
 
 export default (props: OwnProps) => {

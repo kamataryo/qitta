@@ -1,6 +1,7 @@
+import { Task } from 'reducers/task'
 import * as React from 'react'
 import Reactions from 'components/reactions'
-import { Task } from 'reducers/task'
+import TaskControl from 'containers/task/task-control'
 
 export interface OwnProps {
   value: Task[]
@@ -14,8 +15,21 @@ export default class Tasks extends React.Component<OwnProps, {}> {
     return (
       <ul>
         { tasks.map(task => (
-          <li>
-            { task.toString() }
+          <li key={ `task-id-${task.id}` }>
+            <h3>{ task.title }</h3>
+            <dl>
+              <dt>{ '完了状態' }</dt>
+              <dd>
+              <TaskControl
+                taskId={ task.id }
+                done={ task.done }
+              />
+              </dd>
+            </dl>
+            <dl>
+              <dt>{ '担当者' }</dt>
+              <dd>{ task.whoIsResponsible }</dd>
+            </dl>
             <Reactions />
           </li>
         )) }
@@ -24,17 +38,3 @@ export default class Tasks extends React.Component<OwnProps, {}> {
   }
 
 }
-
-
-// <ul>
-// <li>{ '餌やり: あと2時間' }</li>
-// <li>
-//   <div>
-//     <h3>{ '水交換: さとう さんが水を交換しました！' }</h3>
-//     <Reactions />
-//   </div>
-// </li>
-// <li>{ 'トイレ掃除: 予定時刻から20分が経過しています' }</li>
-// <li>{ '遊ぶ' }</li>
-// <li>{ 'ご飯発注' }</li>
-// </ul>

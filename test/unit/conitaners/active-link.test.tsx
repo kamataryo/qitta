@@ -1,6 +1,6 @@
 import 'mocha'
 import * as React from 'react'
-import * as assert from 'power-assert'
+import { expect } from 'chai'
 import configureStore from 'redux-mock-store'
 import { shallow } from 'enzyme'
 import ActiveLink from 'components/active-link'
@@ -21,7 +21,7 @@ describe('Test of ActiveLink container', () => {
     }
     const store = mockStore(initialState)
     const wrapper = shallow(<ActiveLinkContainer store={ store } />)
-    assert(wrapper.getNode().props.pathname === '/testpath')
+    expect(wrapper.getNode().props.pathname).to.equal('/testpath')
   })
 
   it('should connect to component.', () => {
@@ -34,6 +34,6 @@ describe('Test of ActiveLink container', () => {
     }
     const store = mockStore(initialState)
     const wrapper = shallow(<ActiveLinkContainer store={ store } />)
-    assert(wrapper.find(ActiveLink).length === 1)
+    expect(wrapper.find(ActiveLink)).to.have.length(1)
   })
 })
