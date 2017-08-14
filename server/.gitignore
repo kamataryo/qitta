@@ -1,0 +1,5 @@
+/.nyc_outpu
+/coverage
+/dist
+/node_modules
+*.log
