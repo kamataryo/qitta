@@ -27,6 +27,7 @@ app
   // middlewares
   .use(bodyParser.json())
   // endpoints
+  .get('/', (_0, res) => res.status(200).json({ message: 'OK' }))
   //// cat
   .post(  '/cats',     postCats)
   .get(   '/cats',     getCats)
@@ -38,6 +39,6 @@ app
   .get(   '/users',           getUsers)
   .get(   '/users/:username', getUser)
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   process.stdout.write('[application] Server is listening...')
 })

@@ -14,6 +14,7 @@ const getUser = (req: Request, res: Response) => {
           username    : x.username,
           displayName : x.displayName,
           cats        : x.cats,
+          groups      : [],
         })))
     })
     .catch((__0: Error) => {
