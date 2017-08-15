@@ -7,8 +7,7 @@ const Schema = mongoose.Schema
 // TODO I want to check those types with lib/convert function
 
 mongoose.model('Cat', new Schema({
-  id   : Number,
-  name : String,
+  name : { type: String, required: true },
 }))
 
 mongoose.model('User', new Schema({
