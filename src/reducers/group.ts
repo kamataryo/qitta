@@ -1,7 +1,6 @@
 import Group from 'types/group'
 import { Action, Reducer } from 'redux'
 // import * as update from 'immutability-helper'
-import initialData from 'data/groups-dummy'
 
 export interface GroupState {
   data: Group[],
@@ -9,7 +8,7 @@ export interface GroupState {
 
 export const initialState: GroupState = {
   // TODO: get via API
-  data: initialData,
+  data: [],
 }
 
 export enum GroupActionTypes {

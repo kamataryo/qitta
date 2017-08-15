@@ -14,7 +14,7 @@ export default (props: OwnProps) => {
     <ul>
       {
         groups.map(group => (
-          <li key={ `group-id-${group.slug}` }>
+          <li key={ `group-id-${group.username}` }>
             <Group value={ group } />
           </li>
         ))

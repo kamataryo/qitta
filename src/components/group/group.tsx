@@ -15,7 +15,7 @@ const Group = (props: OwnProps) => {
       <h3>{ group.displayName }</h3>
       <ul className={ 'members' }>
         { group.members.map((user: User) => (
-          <li key={ `${group.slug}-${user.slug}` }>
+          <li key={ `${group.username}-${user.username}` }>
             <span>{ user.displayName }</span>
           </li>
         )) }

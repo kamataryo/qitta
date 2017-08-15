@@ -1,8 +1,5 @@
 import { Action, Reducer } from 'redux'
 import * as update from 'immutability-helper'
-
-import initialData from 'data/profile-dummy'
-
 import Profile from 'types/profile'
 
 export interface ProfileState {
@@ -11,7 +8,17 @@ export interface ProfileState {
 
 export const initialState: ProfileState = {
   // TODO: get via API
-  data: initialData,
+  data: {
+    username: '',
+    displayName: '',
+    accessToken: '',
+    cats: [],
+    groups: [],
+    permissions: {
+      read: [],
+      write: [],
+    },
+  },
 }
 
 export enum ProfileActionTypes {

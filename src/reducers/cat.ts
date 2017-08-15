@@ -1,13 +1,6 @@
 import Cat from 'types/cat'
 import { Action, Reducer } from 'redux'
 // import * as update from 'immutability-helper'
-import initialData from 'data/cats-dummy'
-
-// export interface Cat {
-//   id         : number,
-//   name       : string,
-//   belongings : string[],
-// }
 
 export interface CatState {
   data: Cat[],
@@ -15,7 +8,7 @@ export interface CatState {
 
 export const initialState: CatState = {
   // TODO: get via API
-  data: initialData,
+  data: [],
 }
 
 export enum CatActionTypes {

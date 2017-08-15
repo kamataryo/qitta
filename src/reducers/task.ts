@@ -1,7 +1,6 @@
 import Task from 'types/task'
 import { Action, Reducer } from 'redux'
 import * as update from 'immutability-helper'
-import initialData from 'data/tasks-dummy'
 
 export interface TaskState {
   data: Task[],
@@ -9,7 +8,7 @@ export interface TaskState {
 
 export const initialState: TaskState = {
   // TODO: get via API
-  data: initialData,
+  data: [],
 }
 
 export enum TaskActionTypes {
