@@ -1,4 +1,4 @@
-import Userdoc from 'types/userdoc'
+import Userdoc from '../src/types/userdoc'
 
 const data: Userdoc[] = [
   {

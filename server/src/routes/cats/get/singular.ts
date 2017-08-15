@@ -9,14 +9,14 @@ const getCat = (req: Request, res: Response) => {
 
   const { id } = req.params
 
-  CatModel.find({ id })
+  CatModel.find({ _id: id })
     .then((data: any) => {
       res
         .status(data.length > 0 ? 200 : 404)
         .json(data.map((x: any): Cat => ({
-          id   : x.id,
-          name : x.name,
-          belongings: [], // TODO: search belongings from User collecition
+          id         : x.id,
+          name       : x.name,
+          belongings : [], // TODO: search belongings from User collecition
         })))
     })
     .catch((__0: Error) => {

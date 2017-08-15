@@ -8,7 +8,9 @@ import getCat from './routes/cats/get/singular'
 import putCat from './routes/cats/put'
 import deleteCat from './routes/cats/delete'
 
-import usersRoute from './routes/users'
+import postUser from './routes/users/post'
+import getUsers from './routes/users/get/plural'
+import getUser from './routes/users/get/singular'
 
 const app = express()
 
@@ -32,23 +34,9 @@ app
   .put(   '/cats/:id', putCat)
   .delete('/cats/:id', deleteCat)
   //// users
-  .get('/users', usersRoute())
-  .get('/users/:slug', usersRoute('slug'))
-  .get('/:user/cats', (req, res) => {
-
-  const user: string = req.params.user
-
-  if (true) { // ${user} exists
-    res
-      .status(200)
-      .send({ user })
-  }// else {
-  //   res
-  //     .status(404)
-  //     .send('404 not found')
-  // }
-
-})
+  .post(  '/users',           postUser)
+  .get(   '/users',           getUsers)
+  .get(   '/users/:username', getUser)
 
 app.listen(3000, () => {
   process.stdout.write('[application] Server is listening...')

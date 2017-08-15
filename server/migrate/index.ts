@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose'
-import { Cat, User } from '../models'
+import { Cat, User } from '../src/models'
 
 import cats from './cats'
 import users from './users'

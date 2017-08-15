@@ -11,12 +11,16 @@ mongoose.model('Cat', new Schema({
 }))
 
 mongoose.model('User', new Schema({
-  username    : String,
-  password    : String,
-  displayName : String,
-  isGroup     : Boolean,
-  cats        : [Number],
-  members     : [String],
+  username    : {
+    type     : String,
+    required : true,
+    unique   : true,
+  },
+  password    : { type: String, required: true },
+  displayName : { type: String, required: true },
+  isGroup     : { type: Boolean,  default: false },
+  cats        : { type: [Number], default: [] },
+  members     : { type: [String], default: [] },
 }))
 
 export const Cat  = mongoose.model('Cat')

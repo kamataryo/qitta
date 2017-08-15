@@ -1,4 +1,4 @@
-import Catdoc from 'types/catdoc'
+import Catdoc from '../src/types/catdoc'
 
 const data: Catdoc[] = [
   {
