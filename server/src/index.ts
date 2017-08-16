@@ -7,7 +7,6 @@ import getCats from './routes/cats/get/plural'
 import getCat from './routes/cats/get/singular'
 import putCat from './routes/cats/put'
 import deleteCat from './routes/cats/delete'
-
 import postUser from './routes/users/post'
 import getUsers from './routes/users/get/plural'
 import getUser from './routes/users/get/singular'
@@ -26,6 +25,11 @@ mongoose.connect(`mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`, {
 app
   // middlewares
   .use(bodyParser.json())
+  .use((_0, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With')
+    next()
+  })
   // endpoints
   .get('/', (_0, res) => res.status(200).json({ message: 'OK' }))
   //// cat
@@ -38,6 +42,9 @@ app
   .post(  '/users',           postUser)
   .get(   '/users',           getUsers)
   .get(   '/users/:username', getUser)
+  .use((_0, res, _2) => {
+    res.status(404).json({ message: 'resource not found.' })
+  })
 
 app.listen(3001, () => {
   process.stdout.write('[application] Server is listening...')

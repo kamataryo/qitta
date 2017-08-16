@@ -11,7 +11,8 @@ const getUsers = (_0: Request, res: Response) => {
         .json(data.map((x: any): User => ({
           username    : x.username,
           displayName : x.displayName,
-          cats: x.cats,
+          cats        : [],
+          groups      : [],
         })))
     })
     .catch((__0: Error) => {

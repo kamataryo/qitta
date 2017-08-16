@@ -5,9 +5,18 @@ import catReducer, { CatState } from './reducers/cat'
 import profileReducer, { ProfileState } from './reducers/profile'
 import createBrowserHistory from 'history/createBrowserHistory'
 import { routerReducer, RouterState, routerMiddleware } from 'react-router-redux'
+import createSagaMiddleware from 'redux-saga'
+// import mySaga from './sagas'
+import rootSaga from 'sagas'
 
 export const history = createBrowserHistory()
-const middleware = routerMiddleware(history)
+
+const sagaMiddleWare = createSagaMiddleware()
+
+const middlewares = [
+  sagaMiddleWare,
+  routerMiddleware(history),
+]
 
 export interface RootState {
   task    : TaskState,
@@ -27,7 +36,9 @@ const rootReducer = combineReducers({
 
 const rootStore = createStore(
   rootReducer,
-  applyMiddleware(middleware),
+  applyMiddleware(...middlewares),
 )
+
+sagaMiddleWare.run(rootSaga as any) // TODO: type error
 
 export default rootStore
