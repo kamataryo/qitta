@@ -1,7 +1,11 @@
+declare const __PROD__: boolean
+
 // polyfill
 import 'isomorphic-fetch'
 
-const user = (username: string) => (): Promise<object> => fetch(`http://localhost:3001/users/${username}`)
+const FQDN = __PROD__ ? 'qitta-api.biwako.io' : 'localhost:3001'
+
+const user = (username: string) => (): Promise<object> => fetch(`http://${FQDN}/users/${username}`)
   .then(response => {
     if (response.ok) {
       return response.json()

@@ -22,6 +22,7 @@ export const initialState: ProfileState = {
 }
 
 export enum ProfileActionTypes {
+  setProfile     = 'PROFILE.SET_PROFILE',
   setAccessToken = 'PROFILE.SET_ACCESS_TOKEN',
 }
 
@@ -37,13 +38,15 @@ export interface ProfileReducer<T> extends Reducer<T> {
 const profileReducer: ProfileReducer<ProfileState> = (state: ProfileState = initialState, action: ProfileAction): ProfileState => {
 
   const { type } = action
-
   switch (type) {
     case ProfileActionTypes.setAccessToken:
       const { accessToken } = action.payload
       return update(state, { data: { accessToken: { $set: accessToken } } })
     default:
       return state
+    case ProfileActionTypes.setProfile:
+      const profile = action.payload[0]
+      return update(state, { data: { $set: profile } })
   }
 }
 

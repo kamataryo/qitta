@@ -1,35 +1,27 @@
 import {
   call,
   take,
-  // put,
+  put,
   fork,
   Effect,
 } from 'redux-saga/effects'
 import {
   REQUEST_USER,
+  SUCCESS_USER,
+  FAILURE_USER,
 } from 'reducers/actions'
 import API from './API'
 
-// worker Saga: will be fired on USER_FETCH_REQUESTED actions
-// function* fetchUser(action: any) {
-//    try {
-//       const user = call(Api.fetchUser, action.payload.userId)
-//       yield user
-//       yield put({ type: 'USER_FETCH_SUCCEEDED', user })
-//    } catch (e) {
-//       yield put({ type: 'USER_FETCH_FAILED', message: e.message })
-//    }
-// }
-//
-// /*
-//   Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
-//   Allows concurrent fetches of user.
-// */
-// function* mySaga(): Iterator<any> {
-//   yield takeEvery('USER_FETCH_REQUESTED', fetchUser)
-// }
-//
-// export default mySaga
+import { ProfileActionTypes } from 'reducers/profile'
+
+export function* handleSuccessUser(): Iterable<Effect> {
+  while (true) {
+    const { payload } = yield take(SUCCESS_USER)
+    yield put({ type: ProfileActionTypes.setProfile, payload })
+    yield put({ type: '' }) // TODO: put set Cats action here
+    yield put({ type: '' }) // TODO: put set Groups action here
+  }
+}
 
 export function* handleRequestUser(): Iterable<Effect> {
   while (true) {
@@ -37,16 +29,16 @@ export function* handleRequestUser(): Iterable<Effect> {
     const { username } = action.payload
     const result = yield call(API.user(username), action)
     if (!result.ng) {
-      alert('success')
-      // yield put(successUser(payload))
+      // console.log('success')
+      yield put({ type: SUCCESS_USER, payload: result})
     } else {
-      alert('failure')
-      // yield put(failureUser(error))
+      yield put({ type: FAILURE_USER })
     }
   }
 }
 
 export default function* rootSaga(): Iterable<Effect> {
   yield fork(handleRequestUser)
+  yield fork(handleSuccessUser)
 
 }
