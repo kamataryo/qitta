@@ -16,3 +16,7 @@ after_success:
   - openssl aes-256-cbc -K $encrypted_0e70068955a5_key -iv $encrypted_0e70068955a5_iv -in .travis_rsa.enc -out $HOME/.ssh/id_rsa -d
   - chmod 600 $HOME/.ssh/id_rsa
   - .bin/travis-deploy.sh
+
+notifications:
+  slack:
+    secure: krPzJF2I66igPWIHJuC1tmrpnlT2lpkE0Z4R7O6DgU0ApXofjduX/lnuqJIoaTJMTniAjeATO4S55RDEujtxVoeUHhGHcHD2FrH6xZSdLOoVDa58HAxplszAPniVMaWBXuSsp218yTpsdNeWpzIC9zrh/95YRU53odk9qAopgQ44QLqR9defcXjjCMzFsNnbjloxM1PIhOofDgl+UVBNlIyxj+NYady2RZ0NSYu0lfGa7SID6rrnxf4P5mHHcNPIE/bxWe4xCH6n2F9B3bGYjTsaIu6y49E8r8t+SRqYJOZLqqWdU/xiCJHtl8fdCtasUyCtKgUdnVgLds4Th8FovWhSr6d4OoFSJ87UkFam5tgXBLaAbLJhgsG5u9FV8mxjqj5OXWZbPrgXV+D90oQ+qNY6cYDTFO1HIKRqAKpSFHEDgWzCX6ylwNpv2KPOPq6xaZtuxKHIi9cj7mrBRKcyYj7XT2WyWHPvtBbpLsIRkaAMbUfy1Ff8jQ9geYAluaWe35HZWBGOM0jaOp18DvTgIhPQXtqqz3vujSUgSUNFUZ/+CFiXUGoHppE5CJwh8DduMIYwz9Arh0h1FJVZ2+AZCxiWarxrx4yM6/RX4B738Dl4gioasEoQnSoRNLz9VfLk2sckJaapsSd64DfrmG/GZLvgGjT6YRiomfADLl2130Y=
