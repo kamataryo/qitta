@@ -50,6 +50,8 @@ app
   .post(  '/users',           postUser)
   .get(   '/users',           getUsers)
   .get(   '/users/:username', getUser)
+  ////// user's cats
+  .get(   '/users/:owner/cats', (req, res) => getCats(req, res, { filter: { owner: req.params.owner } }))
   .use((_0, res, _2) => {
     res.status(404).json({ message: 'resource not found.' })
   })

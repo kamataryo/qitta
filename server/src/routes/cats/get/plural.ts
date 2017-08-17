@@ -11,9 +11,19 @@ type ProcessingCats = [
   UserDocument[]
 ]
 
-const getCats = (_0: Request, res: Response) => {
+interface Options {
+  filter?: { owner? : string },
+}
 
-  Cat.find({})
+const defaultOptions = {
+  filter: {},
+}
+
+const getCats = (_0: Request, res: Response, givenOptions: Options) => {
+
+  const options = { ...defaultOptions, ... givenOptions }
+
+  Cat.find(options.filter)
     .then((catdoc: CatDocument[]) => {
 
       if (!catdoc) {
