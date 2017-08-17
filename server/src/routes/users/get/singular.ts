@@ -7,7 +7,8 @@ import { UserResponse } from '../../../../../src/types/user'
 type MiddleUser = [
   // TODO: those props should be a ref.
   { username: string, displayName: string, isGroup: boolean },
-  CatDocument[]
+  CatDocument[],
+  UserDocument[]
 ]
 
 const getUser = (req: Request, res: Response) => {
@@ -25,20 +26,31 @@ const getUser = (req: Request, res: Response) => {
           { username: userdoc.username, displayName: userdoc.displayName, isGroup: userdoc.isGroup },
           // find the owner
           Cat.find({ owner: userdoc.username }),
+          // find groups
+          User.find({ isGroup: true, members: userdoc.username }),
         ])
         .then((arg: MiddleUser) => {
 
           const user = arg[0]
           const cats = arg[1]
+          const groups = arg[2]
+
           const catsValues = cats ? cats.map(cat => ({
             id   : cat._id,
             name : cat.name,
           })) : undefined
 
+          const groupValues = groups ? groups.map(group => ({
+            groupName   : group.username,
+            displayName : group.displayName,
+            members     : group.members ? group.members : [],
+          })) : []
+
           const result: UserResponse = {
             // formatted user
             ...user,
-            cats: catsValues,
+            cats   : catsValues,
+            groups : groupValues,
           }
           return res
             .status(200)

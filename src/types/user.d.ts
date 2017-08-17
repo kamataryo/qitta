@@ -13,7 +13,7 @@ interface Cat {
 }
 
 interface Group {
-  groupname: string,
+  groupName: string,
   displayName: string,
   members: string[],
 }
@@ -23,4 +23,5 @@ export interface UserResponse {
   displayName : string,
   isGroup     : boolean,
   cats?       : Cat[],
+  groups?     : Group[],
 }
