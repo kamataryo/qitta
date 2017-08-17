@@ -14,6 +14,18 @@ const user = (username: string) => (): Promise<object> => fetch(`http://${FQDN}/
     }
   })
 
+const deleteCat = (id: string) => (): Promise<object> => fetch(`http://${FQDN}/cats/${id}`, {
+  method: 'delete',
+})
+  .then(response => {
+    if (response.ok) {
+      return response.json()
+    } else {
+      return ({ ng: true })
+    }
+  })
+
 export default {
   user,
+  deleteCat,
 }
