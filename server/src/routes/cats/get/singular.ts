@@ -1,25 +1,19 @@
 import { Request, Response } from 'express'
-import * as mongoose from 'mongoose'
-import {
-  Cat as CatModel,
-  User as UserModel,
-} from '../../../models'
+import { Cat, User } from '../../../models'
+import CatDocument from '../../../types/catdoc'
+import UserDocument from '../../../types/userdoc'
 import { CatResponse } from '../../../../../src/types/cat'
-import User from '../../../../../src/types/user'
 
-interface CatDocument extends mongoose.Document {
-  name: string,
-  owner: string,
-}
-
+// processing intermediate result
 type MiddleCat = [
+  // TODO: those props should be a ref.
   { id: string, name: string },
-  User
+  UserDocument
 ]
 
 const getCat = (req: Request, res: Response) => {
 
-  CatModel.findOne({ _id: req.params.id })
+  Cat.findOne({ _id: req.params.id })
     .then((catdoc: CatDocument) => {
 
       if (!catdoc) {
@@ -31,7 +25,7 @@ const getCat = (req: Request, res: Response) => {
           // format cat result
           { id: catdoc._id, name: catdoc.name },
           // find the owner
-          UserModel.findOne({ username: catdoc.owner }),
+          User.findOne({ username: catdoc.owner }),
         ])
         .then((arg: MiddleCat) => {
 
@@ -42,7 +36,7 @@ const getCat = (req: Request, res: Response) => {
           const ownerProps = owner ? {
             username    : owner.username,
             displayName : owner.displayName,
-            isGroup     : owner.isGroup,
+            isGroup     : !!owner.isGroup,
           } : undefined
 
           const result: CatResponse = {

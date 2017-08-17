@@ -1,6 +1,6 @@
-import Catdoc from '../src/types/catdoc'
+import { OwnProps as CatProps } from '../src/types/catdoc'
 
-const data: Catdoc[] = [
+const data: CatProps[] = [
   {
     name  : 'すもも',
     owner : 'kamata-family',

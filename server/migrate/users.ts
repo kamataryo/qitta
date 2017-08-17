@@ -1,6 +1,6 @@
-import Userdoc from '../src/types/userdoc'
+import { OwnProps as UserProps } from '../src/types/userdoc'
 
-const data: Userdoc[] = [
+const data: UserProps[] = [
   {
     username    : 'kamataryo',
     password    : 'kamataryo',

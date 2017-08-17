@@ -1,4 +1,6 @@
-export default interface Userdoc {
+import * as Mongoose from 'mongoose'
+
+export interface OwnProps {
   username        : string,
   password?       : string,
   displayName     : string,
@@ -6,3 +8,5 @@ export default interface Userdoc {
   members?        : string[],
   administrators? : string[],
 }
+
+export default interface Userdoc extends Mongoose.Document, OwnProps {}
