@@ -1,29 +1,66 @@
 import { Request, Response } from 'express'
+import * as mongoose from 'mongoose'
 import {
   Cat as CatModel,
-  // User as UserModel,
+  User as UserModel,
 } from '../../../models'
-import Cat from '../../../../../src/types/cat'
+import { CatResponse } from '../../../../../src/types/cat'
+import User from '../../../../../src/types/user'
+
+interface CatDocument extends mongoose.Document {
+  name: string,
+  owner: string,
+}
+
+type MiddleCat = [
+  { id: string, name: string },
+  User
+]
 
 const getCat = (req: Request, res: Response) => {
 
-  const { id } = req.params
+  CatModel.findOne({ _id: req.params.id })
+    .then((catdoc: CatDocument) => {
 
-  CatModel.find({ _id: id })
-    .then((data: any) => {
-      res
-        .status(data.length > 0 ? 200 : 404)
-        .json(data.map((x: any): Cat => ({
-          id         : x.id,
-          name       : x.name,
-          belongings : [], // TODO: search belongings from User collecition
-        })))
+      if (!catdoc) {
+        return res
+          .status(404)
+          .json({ message: 'Resource not found.' })
+      } else {
+        return Promise.all<any>([
+          // format cat result
+          { id: catdoc._id, name: catdoc.name },
+          // find the owner
+          UserModel.findOne({ username: catdoc.owner }),
+        ])
+        .then((arg: MiddleCat) => {
+
+          const cat = arg[0]
+          const owner = arg[1]
+          // NOTE: owner includes (hashed) password and unnecessary properties
+          // We should pick necessary properties here.
+          const ownerProps = owner ? {
+            username    : owner.username,
+            displayName : owner.displayName,
+            isGroup     : owner.isGroup,
+          } : undefined
+
+          const result: CatResponse = {
+            // formatted cat
+            ...cat,
+            owner: ownerProps,
+          }
+          return res
+            .status(200)
+            .json(result)
+        })
+      }
     })
     .catch((__0: Error) => {
       // TODO: Log here
       res
         .status(500)
-        .send({ message: 'unknown error' })
+        .send({ message: 'Unknown server error.' })
     })
 }
 

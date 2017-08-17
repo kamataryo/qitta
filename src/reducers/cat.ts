@@ -1,6 +1,6 @@
 import Cat from 'types/cat'
 import { Action, Reducer } from 'redux'
-// import * as update from 'immutability-helper'
+import * as update from 'immutability-helper'
 
 export interface CatState {
   data: Cat[],
@@ -12,6 +12,7 @@ export const initialState: CatState = {
 }
 
 export enum CatActionTypes {
+  Add = 'Cat.Add',
 }
 
 export interface CatAction extends Action {
@@ -28,6 +29,8 @@ const catReducer: CatReducer<CatState> = (state: CatState = initialState, action
   const { type } = action
 
   switch (type) {
+    case CatActionTypes.Add:
+      return update(state, { data: { $push: action.payload.cats } })
     default:
       return state
   }

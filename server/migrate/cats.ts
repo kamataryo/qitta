@@ -2,16 +2,24 @@ import Catdoc from '../src/types/catdoc'
 
 const data: Catdoc[] = [
   {
-    id   : 2001,
-    name : 'すもも',
+    name  : 'すもも',
+    owner : 'kamata-family',
   },
   {
-    id   : 2002,
-    name : 'こもも',
+    name  : 'こもも',
+    owner : 'kamataryo',
   },
   {
-    id   : 2003,
-    name : 'やまもも',
+    name  : 'やまもも',
+    owner : 'sharehouse-catty',
+  },
+  {
+    name  : 'こけもも',
+    owner : 'sharehouse-catty',
+  },
+  {
+    name  : 'ふともも',
+    owner : 'mackerel',
   },
 ]
 
