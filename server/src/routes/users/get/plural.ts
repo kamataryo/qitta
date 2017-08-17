@@ -5,10 +5,11 @@ import UserDocument from '../../../types/userdoc'
 import { UserResponse } from '../../../../../src/types/user'
 
 // intermediate processing type
-type MiddleUser = [
+type ProcessingUsers = [
   // TODO: those props should be a ref.
   Array<{ username: string, displayName: string, isGroup: boolean }>,
-  CatDocument[][]
+  CatDocument[][],
+  UserDocument[][]
 ]
 
 const getUser = (_0: Request, res: Response) => {
@@ -30,15 +31,23 @@ const getUser = (_0: Request, res: Response) => {
           })),
           // find the owner
           Promise.all(userdocs.map(userdoc => Cat.find({ owner: userdoc.username }))),
+          // find groups
+          Promise.all(userdocs.map(userdoc => User.find({ isGroup: true, members: userdoc.username }))),
         ])
-        .then((arg: MiddleUser) => {
+        .then((arg: ProcessingUsers) => {
           const users = arg[0]
           const catss = arg[1].map(cats => cats.map(cat => ({ id: cat._id, name: cat.name })))
+          const groupss = arg[2].map(groups => groups.map(group => ({
+            groupName: group.username,
+            displayName: group.displayName,
+            members: group.members ? group.members : [],
+          })))
 
           const result: UserResponse[] = users.map((user, index) => {
             return ({
               ...user,
               cats: catss[index],
+              groups: groupss[index],
             })
           })
 

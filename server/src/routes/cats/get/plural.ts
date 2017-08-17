@@ -5,7 +5,7 @@ import UserDocument from '../../../types/userdoc'
 import { CatResponse } from '../../../../../src/types/cat'
 
 // intermediate Promise resolved result type
-type MiddleCats = [
+type ProcessingCats = [
   // TODO: those props should be a ref.
   Array<{ id: string, name: string }>,
   UserDocument[]
@@ -27,7 +27,7 @@ const getCats = (_0: Request, res: Response) => {
           // find the owners
           Promise.all(catdoc.map(x => User.findOne({ username: x.owner }))),
         ])
-        .then((arg: MiddleCats) => {
+        .then((arg: ProcessingCats) => {
 
           const cats = arg[0]
           const owners = arg[1]

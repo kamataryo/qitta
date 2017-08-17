@@ -5,7 +5,7 @@ import UserDocument from '../../../types/userdoc'
 import { CatResponse } from '../../../../../src/types/cat'
 
 // processing intermediate result
-type MiddleCat = [
+type ProcessingCat = [
   // TODO: those props should be a ref.
   { id: string, name: string },
   UserDocument
@@ -27,7 +27,7 @@ const getCat = (req: Request, res: Response) => {
           // find the owner
           User.findOne({ username: catdoc.owner }),
         ])
-        .then((arg: MiddleCat) => {
+        .then((arg: ProcessingCat) => {
 
           const cat = arg[0]
           const owner = arg[1]

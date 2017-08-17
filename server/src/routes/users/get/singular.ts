@@ -4,7 +4,7 @@ import CatDocument from '../../../types/catdoc'
 import UserDocument from '../../../types/userdoc'
 import { UserResponse } from '../../../../../src/types/user'
 
-type MiddleUser = [
+type ProcessingUsers = [
   // TODO: those props should be a ref.
   { username: string, displayName: string, isGroup: boolean },
   CatDocument[],
@@ -29,7 +29,7 @@ const getUser = (req: Request, res: Response) => {
           // find groups
           User.find({ isGroup: true, members: userdoc.username }),
         ])
-        .then((arg: MiddleUser) => {
+        .then((arg: ProcessingUsers) => {
 
           const user = arg[0]
           const cats = arg[1]
