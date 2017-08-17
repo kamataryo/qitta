@@ -10,7 +10,12 @@ export default interface User {
 interface Cat {
   id     : string,
   name   : string,
-  owner? : string,
+}
+
+interface Group {
+  groupname: string,
+  displayName: string,
+  members: string[],
 }
 
 export interface UserResponse {

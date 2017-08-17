@@ -7,40 +7,41 @@ import { UserResponse } from '../../../../../src/types/user'
 // intermediate processing type
 type MiddleUser = [
   // TODO: those props should be a ref.
-  { username: string, displayName: string, isGroup: boolean },
-  CatDocument[]
+  Array<{ username: string, displayName: string, isGroup: boolean }>,
+  CatDocument[][]
 ]
 
-const getUser = (req: Request, res: Response) => {
+const getUser = (_0: Request, res: Response) => {
 
-  User.findOne({ username: req.params.username })
-    .then((userdoc: UserDocument) => {
+  User.find({})
+    .then((userdocs: UserDocument[]) => {
 
-      if (!userdoc) {
+      if (!userdocs) {
         return res
           .status(404)
           .json({ message: 'Resource not found.' })
       } else {
         return Promise.all<any>([
           // format user result
-          { username: userdoc.username, displayName: userdoc.displayName, isGroup: userdoc.isGroup },
+          userdocs.map(userdoc => ({
+            username: userdoc.username,
+            displayName: userdoc.displayName,
+            isGroup: userdoc.isGroup,
+          })),
           // find the owner
-          Cat.find({ owner: userdoc.username }),
+          Promise.all(userdocs.map(userdoc => Cat.find({ owner: userdoc.username }))),
         ])
         .then((arg: MiddleUser) => {
+          const users = arg[0]
+          const catss = arg[1].map(cats => cats.map(cat => ({ id: cat._id, name: cat.name })))
 
-          const user = arg[0]
-          const cats = arg[1]
-          const catsValues = cats ? cats.map(cat => ({
-            id   : cat._id,
-            name : cat.name,
-          })) : undefined
+          const result: UserResponse[] = users.map((user, index) => {
+            return ({
+              ...user,
+              cats: catss[index],
+            })
+          })
 
-          const result: UserResponse = {
-            // formatted user
-            ...user,
-            cats: catsValues,
-          }
           return res
             .status(200)
             .json(result)
