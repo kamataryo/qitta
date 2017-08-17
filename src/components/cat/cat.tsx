@@ -11,7 +11,14 @@ const Cat = (props: OwnProps) => {
 
   return (
     <div className={ 'cat' }>
-      <h3>{ cat.name }</h3>
+      <dl>
+        <dt>{ 'ねこID' }</dt>
+        <dd>{ cat.id }</dd>
+      </dl>
+      <dl>
+        <dt>{ 'ねこ名前' }</dt>
+        <dd>{ cat.name }</dd>
+      </dl>
     </div>
   )
 

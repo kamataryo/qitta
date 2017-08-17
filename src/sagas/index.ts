@@ -13,12 +13,13 @@ import {
 import API from './API'
 
 import { ProfileActionTypes } from 'reducers/profile'
+import { CatActionTypes } from 'reducers/cat'
 
 export function* handleSuccessUser(): Iterable<Effect> {
   while (true) {
     const { payload } = yield take(SUCCESS_USER)
-    yield put({ type: ProfileActionTypes.setProfile, payload })
-    yield put({ type: '' }) // TODO: put set Cats action here
+    yield put({ type: ProfileActionTypes.Set, payload })
+    yield put({ type: CatActionTypes.Set, payload })
     yield put({ type: '' }) // TODO: put set Groups action here
   }
 }

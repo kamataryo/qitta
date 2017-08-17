@@ -1,4 +1,4 @@
-export interface Cat {
+export default interface Cat {
   id   : string,
   name : string,
 }

@@ -7,12 +7,11 @@ export interface CatState {
 }
 
 export const initialState: CatState = {
-  // TODO: get via API
   data: [],
 }
 
 export enum CatActionTypes {
-  Add = 'Cat.Add',
+  Set = 'Cat.Set',
 }
 
 export interface CatAction extends Action {
@@ -29,8 +28,8 @@ const catReducer: CatReducer<CatState> = (state: CatState = initialState, action
   const { type } = action
 
   switch (type) {
-    case CatActionTypes.Add:
-      return update(state, { data: { $push: action.payload.cats } })
+    case CatActionTypes.Set:
+      return update(state, { data: { $set: action.payload.cats } })
     default:
       return state
   }

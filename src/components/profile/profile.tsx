@@ -1,19 +1,21 @@
 import * as React from 'react'
 import ProfileObject from 'types/profile'
+import Cat from 'types/cat'
 
 interface OwnProps {
-  value: ProfileObject,
+  profile: ProfileObject,
+  cats : Cat[],
 }
 
 const Profile = (props: OwnProps) => {
 
-  const profile = props.value
+  const { profile, cats } = props
 
   return (
     <div className={ 'profile' }>
       <h3>{ profile.displayName }</h3>
       <h4>{ '飼っているねこ' }</h4>
-      <p>{ `${profile.cats.length} 匹` }</p>
+      <p>{ `${cats.length} 匹` }</p>
     </div>
   )
 }

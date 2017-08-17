@@ -14,7 +14,7 @@ interface AntiStateProps {
 
 const mapStateToProps = (state: RootState): StateProps => {
   return ({
-    cats: state.cat.data,
+    cats: state.cats.data,
   })
 }
 

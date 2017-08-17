@@ -1,10 +1,5 @@
-import User from 'types/user'
-
-export default interface Profile extends User {
-  description? : string,
-  accessToken  : string,
-  permissions  : {
-    read  : string[],
-    write : string[],
-  },
+export default interface Profile {
+  username    : string,
+  displayName : string,
+  isGroup     : boolean,
 }

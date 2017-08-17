@@ -3,9 +3,11 @@ import { RootState } from 'store'
 import ProfileApp, { OwnProps } from 'components/profile/profile-app'
 import Profile from 'types/profile'
 import { requestUser } from 'reducers/actions'
+import Cat from 'types/cat'
 
 export interface StateProps {
   profile: Profile,
+  cats : Cat[],
 }
 
 interface AntiStateProps {
@@ -20,6 +22,7 @@ export interface DispatchProps {
 const mapStateToProps = (state: RootState): StateProps => {
   return ({
     profile: state.profile.data,
+    cats: state.cats.data,
   })
 }
 

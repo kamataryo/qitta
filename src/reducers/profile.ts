@@ -7,23 +7,15 @@ export interface ProfileState {
 }
 
 export const initialState: ProfileState = {
-  // TODO: get via API
   data: {
-    username: '',
-    displayName: '',
-    accessToken: '',
-    cats: [],
-    groups: [],
-    permissions: {
-      read: [],
-      write: [],
-    },
+    username    : '',
+    displayName : '',
+    isGroup     : false,
   },
 }
 
 export enum ProfileActionTypes {
-  setProfile     = 'PROFILE.SET_PROFILE',
-  setAccessToken = 'PROFILE.SET_ACCESS_TOKEN',
+  Set = 'PROFILE.SET_PROFILE',
 }
 
 export interface ProfileAction extends Action {
@@ -39,14 +31,11 @@ const profileReducer: ProfileReducer<ProfileState> = (state: ProfileState = init
 
   const { type } = action
   switch (type) {
-    case ProfileActionTypes.setAccessToken:
-      const { accessToken } = action.payload
-      return update(state, { data: { accessToken: { $set: accessToken } } })
+    case ProfileActionTypes.Set:
+      const profile = action.payload
+      return update(state, { data: { $set: profile } })
     default:
       return state
-    case ProfileActionTypes.setProfile:
-      const profile = action.payload[0]
-      return update(state, { data: { $set: profile } })
   }
 }
 

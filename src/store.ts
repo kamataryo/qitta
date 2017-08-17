@@ -21,7 +21,7 @@ const middlewares = [
 export interface RootState {
   task    : TaskState,
   group   : GroupState,
-  cat     : CatState,
+  cats    : CatState,
   profile : ProfileState,
   routing : RouterState,
 }
@@ -29,7 +29,7 @@ export interface RootState {
 const rootReducer = combineReducers({
   task    : taskReducer,
   group   : groupReducer,
-  cat     : catReducer,
+  cats    : catReducer,
   profile : profileReducer,
   routing : routerReducer as Reducer<RouterState>,
 })

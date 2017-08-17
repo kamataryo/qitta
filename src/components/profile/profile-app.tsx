@@ -1,9 +1,11 @@
 import ProfileObject from 'types/profile'
 import * as React from 'react'
 import Profile from './profile'
+import Cat from 'types/cat'
 
 export interface OwnProps {
   profile: ProfileObject,
+  cats : Cat[],
   fetchUser: (username: string) => void,
 }
 
@@ -15,12 +17,13 @@ export default class ProfileApp extends React.Component<OwnProps, OwnState> {
 
   public constructor(props: OwnProps) {
     super(props)
-    this.state = { username: 'kamataryo' }
+    this.state = { username: '' }
   }
 
   public render() {
+
     const { username } = this.state
-    const { profile } = this.props
+    const { profile, cats } = this.props
     const fetchUser = () => this.props.fetchUser(username)
     // TODO: too redundant..
     const onTextChange = (e: React.FormEvent<{}>) => this.setState({ username: (e.target as HTMLInputElement).value })
@@ -28,13 +31,24 @@ export default class ProfileApp extends React.Component<OwnProps, OwnState> {
     return (
       <div id={ 'profile-app' }>
         <h2>{ 'profile app' }</h2>
-        <Profile value={ profile } />
+        <Profile profile={ profile } cats={ cats } />
         <input
           type={ 'text' }
           value={ username }
+          placeholder={ '(username)' }
           onChange={ onTextChange }
         />
         <button onClick={ fetchUser }>{ 'get profile' }</button>
+        <pre>
+          <h3>examples of username</h3>
+          <ul>
+            <li>salamdner</li>
+            <li>kamataryo</li>
+            <li>kamata-family</li>
+            <li>sharehouse-catty</li>
+            <li>mackerel</li>
+          </ul>
+        </pre>
       </div>
     )
   }
