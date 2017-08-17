@@ -1,4 +1,4 @@
-import GroupObject from 'types/group'
+import { Group as GroupObject } from 'types/user'
 import * as React from 'react'
 import Group from './group'
 
@@ -14,7 +14,7 @@ export default (props: OwnProps) => {
     <ul>
       {
         groups.map(group => (
-          <li key={ `group-id-${group.username}` }>
+          <li key={ `group-id-${group.groupName}` }>
             <Group value={ group } />
           </li>
         ))

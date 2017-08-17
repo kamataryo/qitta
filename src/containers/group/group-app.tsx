@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { RootState } from 'store'
 import GroupApp, { OwnProps } from 'components/group/group-app'
-import Group from 'types/group'
+import { Group } from 'types/user'
 
 export interface StateProps {
   groups: Group[],
@@ -14,7 +14,7 @@ interface AntiStateProps {
 
 const mapStateToProps = (state: RootState): StateProps => {
   return ({
-    groups: state.group.data,
+    groups: state.groups.data,
   })
 }
 

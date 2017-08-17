@@ -12,7 +12,7 @@ interface Cat {
   name   : string,
 }
 
-interface Group {
+export interface Group {
   groupName: string,
   displayName: string,
   members: string[],

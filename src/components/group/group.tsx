@@ -1,5 +1,5 @@
 import * as React from 'react'
-import GroupObject from 'types/group'
+import { Group as GroupObject } from 'types/user'
 import User from 'types/user'
 
 interface OwnProps {
@@ -8,15 +8,15 @@ interface OwnProps {
 
 const Group = (props: OwnProps) => {
 
-  const group = props.value
+  const group = props.value as any
 
   return (
     <div className={ 'group' }>
       <h3>{ group.displayName }</h3>
       <ul className={ 'members' }>
         { group.members.map((user: User) => (
-          <li key={ `${group.username}-${user.username}` }>
-            <span>{ user.displayName }</span>
+          <li key={ `${group.groupName}-${user}` }>
+            <span>{ user }</span>
           </li>
         )) }
       </ul>

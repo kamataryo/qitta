@@ -2,10 +2,12 @@ import ProfileObject from 'types/profile'
 import * as React from 'react'
 import Profile from './profile'
 import Cat from 'types/cat'
+import { Group } from 'types/user'
 
 export interface OwnProps {
   profile: ProfileObject,
   cats : Cat[],
+  groups: Group[],
   fetchUser: (username: string) => void,
 }
 
@@ -23,7 +25,7 @@ export default class ProfileApp extends React.Component<OwnProps, OwnState> {
   public render() {
 
     const { username } = this.state
-    const { profile, cats } = this.props
+    const { profile, cats, groups } = this.props
     const fetchUser = () => this.props.fetchUser(username)
     // TODO: too redundant..
     const onTextChange = (e: React.FormEvent<{}>) => this.setState({ username: (e.target as HTMLInputElement).value })
@@ -31,7 +33,11 @@ export default class ProfileApp extends React.Component<OwnProps, OwnState> {
     return (
       <div id={ 'profile-app' }>
         <h2>{ 'profile app' }</h2>
-        <Profile profile={ profile } cats={ cats } />
+        <Profile
+          profile={ profile }
+          cats={ cats }
+          groups={ groups }
+        />
         <input
           type={ 'text' }
           value={ username }

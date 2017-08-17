@@ -4,10 +4,12 @@ import ProfileApp, { OwnProps } from 'components/profile/profile-app'
 import Profile from 'types/profile'
 import { requestUser } from 'reducers/actions'
 import Cat from 'types/cat'
+import { Group } from 'types/user'
 
 export interface StateProps {
   profile: Profile,
   cats : Cat[],
+  groups: Group[],
 }
 
 interface AntiStateProps {
@@ -23,6 +25,7 @@ const mapStateToProps = (state: RootState): StateProps => {
   return ({
     profile: state.profile.data,
     cats: state.cats.data,
+    groups: state.groups.data,
   })
 }
 

@@ -1,4 +1,4 @@
-import Group from 'types/group'
+import { Group } from 'types/user'
 import * as React from 'react'
 import Groups from './groups'
 

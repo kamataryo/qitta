@@ -29,7 +29,8 @@ const catReducer: CatReducer<CatState> = (state: CatState = initialState, action
 
   switch (type) {
     case CatActionTypes.Set:
-      return update(state, { data: { $set: action.payload.cats || [] } })
+      const cats = action.payload || []
+      return update(state, { data: { $set: cats } })
     default:
       return state
   }
