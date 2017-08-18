@@ -60,7 +60,7 @@ export function* handleRequestDeleteCat(): Iterable<Effect> {
 export function* handleSuccessDeleteCat(): Iterable<Effect> {
   while (true) {
     const { payload } = yield take(SUCCESS_DELETE_CAT)
-    yield put({ type: CatActionTypes.Set, payload: payload.cats })
+    yield put({ type: CatActionTypes.Set, payload })
   }
 }
 
@@ -80,7 +80,7 @@ export function* handleRequestPostCat(): Iterable<Effect> {
 export function* handleSuccessPostCat(): Iterable<Effect> {
   while (true) {
     const { payload } = yield take(SUCCESS_POST_CAT)
-    yield put({ type: CatActionTypes.Set, payload: payload.cats })
+    yield put({ type: CatActionTypes.Set, payload })
   }
 }
 

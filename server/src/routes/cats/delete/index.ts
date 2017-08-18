@@ -1,8 +1,6 @@
 import { Request, Response } from 'express'
-import {
-  Cat as CatModel,
-  // User as UserModel,
-} from '../../../models'
+import { Cat } from '../../../models'
+import CatDocument from '../../../types/catdoc'
 
 const putCat = (req: Request, res: Response) => {
 
@@ -13,7 +11,7 @@ const putCat = (req: Request, res: Response) => {
     delete filter.id
   }
 
-  CatModel.remove(filter)
+  Cat.remove(filter)
     .catch((__0: Error) => {
       // log here
       res
@@ -21,9 +19,14 @@ const putCat = (req: Request, res: Response) => {
         .send({ message: 'bad request' })
     })
     .then(() => {
+      delete filter._id
+      return Cat.find(filter)
+    })
+    .then((cats: CatDocument[]) => {
+      const result = cats.map(cat => ({ id: cat._id, name: cat.name }))
       res
         .status(200)
-        .json({})
+        .json(result)
     })
     .catch((__0: Error) => {
       // TODO: Log here

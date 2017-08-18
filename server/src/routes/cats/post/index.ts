@@ -1,8 +1,6 @@
 import { Request, Response } from 'express'
-import {
-  Cat as CatModel,
-  // User as UserModel,
-} from '../../../models'
+import { Cat } from '../../../models'
+import CatDocument from '../../../types/catdoc'
 
 const postCats = (req: Request, res: Response) => {
 
@@ -13,7 +11,7 @@ const postCats = (req: Request, res: Response) => {
   if (req.params.owner) {
       cat.owner = req.params.owner as string
   }
-  new CatModel(cat).save()
+  new Cat(cat).save()
     .catch((__0: Error) => {
       // log here
       res
@@ -21,9 +19,14 @@ const postCats = (req: Request, res: Response) => {
         .send({ message: 'bad request' })
     })
     .then(() => {
+      const filter: any = cat.owner ? { owner: cat.owner } : {}
+      return Cat.find(filter)
+    })
+    .then((cats: CatDocument[]) => {
+      const result = cats.map(eachCat => ({ id: eachCat._id, name: eachCat.name }))
       res
         .status(200)
-        .json(cat)
+        .json(result)
     })
     .catch((__0: Error) => {
       // TODO: Log here
