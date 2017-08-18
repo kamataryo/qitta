@@ -10,6 +10,9 @@ const postCats = (req: Request, res: Response) => {
   // Now work with single cat
   const cat: any = req.body
 
+  if (req.params.owner) {
+      cat.owner = req.params.owner as string
+  }
   new CatModel(cat).save()
     .catch((__0: Error) => {
       // log here

@@ -35,6 +35,7 @@ app
   .options('*', (_0, res) => {
     res
       .header('Access-Control-Allow-Methods', 'POST,GET,PUT,DELETE')
+      .header('Access-Control-Allow-Headers', 'X-Requested-With,Content-Type')
       .status(200)
       .json({ message: 'OK' })
   })
@@ -51,7 +52,10 @@ app
   .get(   '/users',           getUsers)
   .get(   '/users/:username', getUser)
   ////// user's cats
-  .get(   '/users/:owner/cats', (req, res) => getCats(req, res, { filter: { owner: req.params.owner } }))
+  .post(  '/users/:owner/cats', postCats)
+  .get(   '/users/:owner/cats', getCats)
+  .get(   '/users/:owner/cats/:id', getCat)
+  .delete('/users/:owner/cats/:id', (deleteCat))
   .use((_0, res, _2) => {
     res.status(404).json({ message: 'resource not found.' })
   })

@@ -1,15 +1,21 @@
 import * as React from 'react'
 import CatObject from 'types/cat'
 
-interface OwnProps {
-  value: CatObject,
-  unregister: (id: string) => void,
+export interface PureOwnProps {
+  cat: CatObject,
 }
+
+interface ConnectedProps {
+  username: string,
+  unregister: (id: string, owner: string) => void,
+}
+
+interface OwnProps extends PureOwnProps, ConnectedProps {}
 
 const Cat = (props: OwnProps) => {
 
-  const cat = props.value
-  const createUnregisterHandler = (id: string) => () => props.unregister(id)
+  const { cat, username } = props
+  const createUnregisterHandler = (id: string, owner: string) => () => props.unregister(id, owner)
 
   return (
     <div className={ 'cat' }>
@@ -18,10 +24,10 @@ const Cat = (props: OwnProps) => {
         <dd>{ cat.id }</dd>
       </dl>
       <dl>
-        <dt>{ 'ねこ名前' }</dt>
+        <dt>{ 'ねこの名前' }</dt>
         <dd>{ cat.name }</dd>
       </dl>
-      <button onClick={ createUnregisterHandler(cat.id) }>{ 'このネコの登録を解除' }</button>
+      <button onClick={ createUnregisterHandler(cat.id, username) }>{ 'このネコの登録を解除' }</button>
     </div>
   )
 

@@ -12,6 +12,9 @@ import {
   REQUEST_DELETE_CAT,
   SUCCESS_DELETE_CAT,
   FAILURE_DELETE_CAT,
+  REQUEST_POST_CAT,
+  SUCCESS_POST_CAT,
+  FAILURE_POST_CAT,
 } from 'reducers/actions'
 import API from './API'
 
@@ -44,8 +47,8 @@ export function* handleSuccessUser(): Iterable<Effect> {
 export function* handleRequestDeleteCat(): Iterable<Effect> {
   while (true) {
     const action = yield take(REQUEST_DELETE_CAT)
-    const { id } = action.payload
-    const result = yield call(API.deleteCat(id), action)
+    const { id, owner } = action.payload
+    const result = yield call(API.deleteCat(id, owner), action)
     if (!result.ng) {
       yield put({ type: SUCCESS_DELETE_CAT, payload: result})
     } else {
@@ -61,10 +64,33 @@ export function* handleSuccessDeleteCat(): Iterable<Effect> {
   }
 }
 
+export function* handleRequestPostCat(): Iterable<Effect> {
+  while (true) {
+    const action = yield take(REQUEST_POST_CAT)
+    const { username, catname } = action.payload
+    const result = yield call(API.postCat(username, catname), action)
+    if (!result.ng) {
+      yield put({ type: SUCCESS_POST_CAT, payload: result})
+    } else {
+      yield put({ type: FAILURE_POST_CAT })
+    }
+  }
+}
+
+export function* handleSuccessPostCat(): Iterable<Effect> {
+  while (true) {
+    const { payload } = yield take(SUCCESS_POST_CAT)
+    yield put({ type: CatActionTypes.Set, payload: payload.cats })
+  }
+}
+
 export default function* rootSaga(): Iterable<Effect> {
   yield fork(handleRequestUser)
   yield fork(handleSuccessUser)
 
   yield fork(handleRequestDeleteCat)
   yield fork(handleSuccessDeleteCat)
+
+  yield fork(handleRequestPostCat)
+  yield fork(handleSuccessPostCat)
 }

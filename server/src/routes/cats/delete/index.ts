@@ -6,9 +6,14 @@ import {
 
 const putCat = (req: Request, res: Response) => {
 
-  const { id } = req.params
+  const filter = { ...req.params }
 
-  CatModel.remove({ _id: id })
+  if (filter.id !== void 0) {
+    filter._id = filter.id
+    delete filter.id
+  }
+
+  CatModel.remove(filter)
     .catch((__0: Error) => {
       // log here
       res

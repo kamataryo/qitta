@@ -14,9 +14,28 @@ const user = (username: string) => (): Promise<object> => fetch(`http://${FQDN}/
     }
   })
 
-const deleteCat = (id: string) => (): Promise<object> => fetch(`http://${FQDN}/cats/${id}`, {
+const deleteCat = (id: string, owner: string) => (): Promise<object> => fetch(`http://${FQDN}/users/${owner}/cats/${id}`, {
   method: 'delete',
 })
+  .then(response => {
+    if (response.ok) {
+      return response.json()
+    } else {
+      return ({ ng: true })
+    }
+  })
+
+const postCat = (owner: string, catname: string) => (): Promise<object> => fetch(
+  `http://${FQDN}/users/${owner}/cats`,
+  {
+    method: 'post',
+    body: JSON.stringify({ name: catname }),
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    }),
+  },
+)
   .then(response => {
     if (response.ok) {
       return response.json()
@@ -28,4 +47,5 @@ const deleteCat = (id: string) => (): Promise<object> => fetch(`http://${FQDN}/c
 export default {
   user,
   deleteCat,
+  postCat,
 }

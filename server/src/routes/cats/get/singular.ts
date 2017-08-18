@@ -13,7 +13,13 @@ type ProcessingCat = [
 
 const getCat = (req: Request, res: Response) => {
 
-  Cat.findOne({ _id: req.params.id })
+  const filter = { ...req.params }
+  if (filter.id !== void 0) {
+    filter._id = filter.id
+    delete filter.id
+  }
+
+  Cat.findOne(filter)
     .then((catdoc: CatDocument) => {
 
       if (!catdoc) {
