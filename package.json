@@ -70,6 +70,7 @@
     "@types/redux-mock-store": "0.0.9",
     "@types/webpack-env": "^1.13.0",
     "chai": "^4.1.1",
+    "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.1",
     "enzyme": "^2.9.1",
     "html-webpack-plugin": "^2.29.0",

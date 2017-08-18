@@ -1,6 +1,7 @@
 const path              = require('path')
 const webpack           = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
 
@@ -67,6 +68,11 @@ module.exports = {
     new webpack.DefinePlugin({
       __PROD__: process.env.NODE_ENV === 'production',
     }),
+
+    new CopyWebpackPlugin([
+      // { from: './assets',     to: path.join(__dirname, '/dist') },
+      { from: '.bin/_redirects', to: path.join(__dirname, '/dist') },
+    ]),
   ],
 
   devServer: {
