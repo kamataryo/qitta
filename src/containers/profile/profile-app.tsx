@@ -2,7 +2,7 @@ import { connect, Dispatch } from 'react-redux'
 import { RootState } from 'store'
 import ProfileApp, { OwnProps } from 'components/profile/profile-app'
 import Profile from 'types/profile'
-import { requestUser } from 'reducers/actions'
+import { requestGetProfile } from 'reducers/actions/async/profile/get'
 import Cat from 'types/cat'
 import { Group } from 'types/user'
 
@@ -31,7 +31,7 @@ const mapStateToProps = (state: RootState): StateProps => {
 
 const mapDispatchToProps = (dispatch: Dispatch<{}>): DispatchProps => {
   return ({
-    fetchUser: username => dispatch(requestUser(username)),
+    fetchUser: username => dispatch(requestGetProfile(username)),
   })
 }
 

@@ -1,18 +1,36 @@
-import { Group } from 'types/user'
 import * as React from 'react'
-import Groups from './groups'
+import { Group as GroupProp } from 'types/user'
+import Group from '../../containers/group/group'
 
-export interface OwnProps {
-  groups: Group[],
+export interface PureOwnProps {}
+
+export interface ConnectedProps {
+  groups: GroupProp[],
+  username: string,
+  register: (username: string, groupName: string) => void,
 }
 
-export default (props: OwnProps) => {
-  const groups = props.groups
+interface OwnProps extends PureOwnProps, ConnectedProps {}
 
-  return (
-    <div id={ 'group-app' }>
-      <h2>{ 'group app' }</h2>
-      <Groups value={ groups } />
-    </div>
-  )
+export default class GroupApp extends React.Component<OwnProps, {}> {
+
+  public render() {
+
+    const groups = this.props.groups
+
+    return (
+      <div id={ 'group-app' }>
+        <h2>{ 'group app' }</h2>
+        <ul>
+          {
+            groups.map(group => (
+              <li key={ `group-id-${group.groupName}` }>
+                <Group group={ group } />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    )
+  }
 }

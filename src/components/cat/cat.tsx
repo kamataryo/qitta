@@ -1,8 +1,8 @@
 import * as React from 'react'
-import CatObject from 'types/cat'
+import CatProps from 'types/cat'
 
 export interface PureOwnProps {
-  cat: CatObject,
+  cat: CatProps,
 }
 
 interface ConnectedProps {

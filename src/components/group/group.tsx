@@ -1,22 +1,28 @@
 import * as React from 'react'
-import { Group as GroupObject } from 'types/user'
-import User from 'types/user'
+import { Group as GroupProps } from 'types/user'
 
-interface OwnProps {
-  value: GroupObject,
+export interface PureOwnProps {
+  group: GroupProps,
 }
+
+interface ConnectedProps {
+  username: string,
+  unregister: (groupname: string, username: string) => void,
+}
+
+interface OwnProps extends PureOwnProps, ConnectedProps {}
 
 const Group = (props: OwnProps) => {
 
-  const group = props.value as any
+  const { group } = props
 
   return (
     <div className={ 'group' }>
       <h3>{ group.displayName }</h3>
       <ul className={ 'members' }>
-        { group.members.map((user: User) => (
-          <li key={ `${group.groupName}-${user}` }>
-            <span>{ user }</span>
+        { group.members.map((username: string) => (
+          <li key={ `${group.groupName}-${username}` }>
+            <span>{ username }</span>
           </li>
         )) }
       </ul>

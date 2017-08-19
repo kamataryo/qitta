@@ -51,6 +51,10 @@ app
   .post(  '/users',           postUser)
   .get(   '/users',           getUsers)
   .get(   '/users/:username', getUser)
+  //// groups
+  // .post(  '/groups',           postUser)
+  // .get(   '/groups',            getUsers)
+  // .get(   '/groups/:groupname', getUser)
   ////// user's cats
   .post(  '/users/:owner/cats', postCats)
   .get(   '/users/:owner/cats', getCats)

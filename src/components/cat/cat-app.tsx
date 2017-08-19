@@ -1,5 +1,5 @@
-import CatProps from 'types/cat'
 import * as React from 'react'
+import CatProps from 'types/cat'
 import Cat from '../../containers/cat/cat'
 import * as update from 'immutability-helper'
 

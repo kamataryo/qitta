@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 import { RootState } from 'store'
-import Cat, { PureOwnProps } from 'components/cat/cat'
-import { deleteCat } from 'reducers/actions/async/cat/delete'
+import Group, { PureOwnProps } from 'components/group/group'
+import { deleteGroup } from 'reducers/actions/async/group/delete'
 
 interface StateProps {
-  username : string,
+  username: string,
 }
 
 interface AntiStateProps {
@@ -14,11 +14,11 @@ interface AntiStateProps {
 }
 
 interface DispatchProps {
-  unregister: (id: string, owner: string) => void,
+  unregister: (groupname: string, username: string) => void,
 }
 
 interface AntiDispatchProps {
-  unregister?: (id: string, owner: string) => void,
+  unregister?: (groupname: string, username: string) => void,
 }
 
 type AllProps = PureOwnProps|AntiStateProps|AntiDispatchProps
@@ -33,10 +33,10 @@ const mapStateToProps: MapStateToProps = state => {
 
 const mapDispatchToProps: MapDispatchToProps = dispatch => {
   return ({
-    unregister: (id: string, owner: string) => dispatch(deleteCat(id, owner)),
+    unregister: (groupname: string, username: string) => dispatch(deleteGroup(groupname, username)),
   })
 }
 
-const CatContainer = connect<StateProps, DispatchProps, AllProps>(mapStateToProps, mapDispatchToProps)(Cat)
+const GroupContainer = connect<StateProps, DispatchProps, AllProps>(mapStateToProps, mapDispatchToProps)(Group)
 
-export default CatContainer
+export default GroupContainer
