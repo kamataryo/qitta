@@ -11,6 +11,7 @@
 ## Required
 
 - Node.js >= 4
+- Docker
 
 ## Getting started
 
@@ -18,18 +19,19 @@
 $ git clone git@github.com:kamataryo/qitta.git
 $ cd qitta
 $ npm install
+$ pushd ./server && npm install && popd
 ```
 
-Start a dev-http-server:
+Start a client-dev-http-server:
 
 ```shell
 $ npm start
 ```
 
-Then build:
+SAtart mock API server:
 
 ```shell
-$ npm run build
+$ pushd ./server && npm start; popd
 ```
 
 ## Automated testing
