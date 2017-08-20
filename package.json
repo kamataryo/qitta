@@ -4,7 +4,7 @@
   "description": "ねこ世話アプリケーション qitta のクライアントです。",
   "main": "index.js",
   "scripts": {
-    "build": "NODE_ENV=production webpack -p",
+    "build": "cross_env NODE_ENV=production webpack -p",
     "start": "webpack-dev-server --progress --colors --inline --watch",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}' && tsc -p ./ --noEmit",
     "test": "cross-env NODE_ENV=test NODE_PATH=src:test mocha",
