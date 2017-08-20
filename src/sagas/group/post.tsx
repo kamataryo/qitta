@@ -1,4 +1,4 @@
-import { call, take, put, Effect } from 'redux-saga/effects'
+import { fork, call, take, put, Effect } from 'redux-saga/effects'
 import { Types as POST_GROUP_TYPES } from 'reducers/actions/async/group/post'
 import postGroup from 'api/group/post'
 import { GroupActionTypes } from 'reducers/group'
@@ -26,3 +26,8 @@ export function* handleSuccessPostGroup(): Iterable<Effect> {
     yield put({ type: GroupActionTypes.Set, payload })
   }
 }
+
+export default [
+  fork(handleRequestPostGroup),
+  fork(handleSuccessPostGroup),
+]

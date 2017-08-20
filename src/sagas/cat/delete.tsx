@@ -1,4 +1,4 @@
-import { call, take, put, Effect } from 'redux-saga/effects'
+import { fork, call, take, put, Effect } from 'redux-saga/effects'
 import { Types as DELETE_CAT_TYPES } from 'reducers/actions/async/cat/delete'
 import deleteCat from 'api/cat/delete'
 import { CatActionTypes } from 'reducers/cat'
@@ -22,3 +22,8 @@ export function* handleSuccessDeleteCat(): Iterable<Effect> {
     yield put({ type: CatActionTypes.Set, payload })
   }
 }
+
+export default [
+  fork(handleRequestDeleteCat),
+  fork(handleSuccessDeleteCat),
+]

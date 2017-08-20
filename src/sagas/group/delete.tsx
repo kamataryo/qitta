@@ -1,4 +1,4 @@
-import { call, take, put, Effect } from 'redux-saga/effects'
+import { fork, call, take, put, Effect } from 'redux-saga/effects'
 import { Types as DELETE_GROUP_TYPES } from 'reducers/actions/async/group/delete'
 import APIdeleteGroup from 'api/group/delete'
 import { GroupActionTypes } from 'reducers/group'
@@ -22,3 +22,8 @@ export function* handleSuccessDeleteGroup(): Iterable<Effect> {
     yield put({ type: GroupActionTypes.Set, payload })
   }
 }
+
+export default [
+  fork(handleRequestDeleteGroup),
+  fork(handleSuccessDeleteGroup),
+]

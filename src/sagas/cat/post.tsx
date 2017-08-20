@@ -1,4 +1,4 @@
-import { call, take, put, Effect } from 'redux-saga/effects'
+import { fork, call, take, put, Effect } from 'redux-saga/effects'
 import { Types as POST_CAT_TYPES } from 'reducers/actions/async/cat/post'
 import postCat from 'api/cat/post'
 import { CatActionTypes } from 'reducers/cat'
@@ -26,3 +26,8 @@ export function* handleSuccessPostCat(): Iterable<Effect> {
     yield put({ type: CatActionTypes.Set, payload })
   }
 }
+
+export default [
+  fork(handleRequestPostCat),
+  fork(handleSuccessPostCat),
+]

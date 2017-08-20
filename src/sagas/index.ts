@@ -1,46 +1,15 @@
-import {
-  fork,
-  Effect,
-} from 'redux-saga/effects'
+import { Effect } from 'redux-saga/effects'
 
-import {
-  handleRequestGetProfile,
-  handleSuccessGetProfile,
-} from './profile/get'
-
-import {
-  handleRequestPostGroup,
-  handleSuccessPostGroup,
-} from './group/post'
-
-import {
-  handleRequestDeleteGroup,
-  handleSuccessDeleteGroup,
-} from './group/delete'
-
-import {
-  handleRequestPostCat,
-  handleSuccessPostCat,
-} from './cat/post'
-
-import {
-  handleRequestDeleteCat,
-  handleSuccessDeleteCat,
-} from './cat/delete'
+import GetProfileSagas from './profile/get'
+import PostGroupSagas from './group/post'
+import DeleteGroupSagas from './group/delete'
+import PostCatSagas from './cat/post'
+import DeleteCatSagas from './cat/delete'
 
 export default function* rootSaga(): Iterable<Effect> {
-  yield fork(handleRequestGetProfile)
-  yield fork(handleSuccessGetProfile)
-
-  yield fork(handleRequestPostGroup)
-  yield fork(handleSuccessPostGroup)
-
-  yield fork(handleRequestDeleteGroup)
-  yield fork(handleSuccessDeleteGroup)
-
-  yield fork(handleRequestDeleteCat)
-  yield fork(handleSuccessDeleteCat)
-
-  yield fork(handleRequestPostCat)
-  yield fork(handleSuccessPostCat)
+  yield* GetProfileSagas
+  yield* PostGroupSagas
+  yield* DeleteGroupSagas
+  yield* PostCatSagas
+  yield* DeleteCatSagas
 }

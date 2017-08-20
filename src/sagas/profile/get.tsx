@@ -1,4 +1,4 @@
-import { call, take, put, Effect } from 'redux-saga/effects'
+import { fork, call, take, put, Effect } from 'redux-saga/effects'
 import { ProfileActionTypes } from 'reducers/profile'
 import { GroupActionTypes } from 'reducers/group'
 import { CatActionTypes } from 'reducers/cat'
@@ -26,3 +26,8 @@ export function* handleSuccessGetProfile(): Iterable<Effect> {
     yield put({ type: GroupActionTypes.Set, payload: payload.groups })
   }
 }
+
+export default [
+  fork(handleRequestGetProfile),
+  fork(handleSuccessGetProfile),
+]
