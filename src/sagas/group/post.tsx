@@ -6,8 +6,8 @@ import { GroupActionTypes } from 'reducers/group'
 export function* handleRequestPostGroup(): Iterable<Effect> {
   while (true) {
     const action = yield take(POST_GROUP_TYPES.REQUEST)
-    const { username, groupname } = action.payload
-    const result = yield call(postGroup(username, groupname), action)
+    const { username, groupname, displayName } = action.payload
+    const result = yield call(postGroup(username, groupname, displayName), action)
     if (!result.ng) {
       yield put({ type: POST_GROUP_TYPES.SUCCESS, payload: result})
     } else {

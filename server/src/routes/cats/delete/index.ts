@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { Cat } from '../../../models'
 import CatDocument from '../../../types/catdoc'
 
-const putCat = (req: Request, res: Response) => {
+const deleteCat = (req: Request, res: Response) => {
 
   const filter = { ...req.params }
 
@@ -13,7 +13,6 @@ const putCat = (req: Request, res: Response) => {
 
   Cat.remove(filter)
     .catch((__0: Error) => {
-      // log here
       res
         .status(400)
         .send({ message: 'bad request' })
@@ -36,4 +35,4 @@ const putCat = (req: Request, res: Response) => {
     })
 }
 
-export default putCat
+export default deleteCat

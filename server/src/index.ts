@@ -10,6 +10,8 @@ import deleteCat from './routes/cats/delete'
 import postUser from './routes/users/post'
 import getUsers from './routes/users/get/plural'
 import getUser from './routes/users/get/singular'
+import deleteUser from './routes/users/delete'
+import deleteGroup from './routes/group/delete'
 
 const app = express()
 
@@ -51,6 +53,7 @@ app
   .post(  '/users',           postUser)
   .get(   '/users',           getUsers)
   .get(   '/users/:username', getUser)
+  .delete('/users/:username', deleteUser)
   //// groups
   // .post(  '/groups',           postUser)
   // .get(   '/groups',            getUsers)
@@ -59,9 +62,13 @@ app
   .post(  '/users/:owner/cats', postCats)
   .get(   '/users/:owner/cats', getCats)
   .get(   '/users/:owner/cats/:id', getCat)
-  .delete('/users/:owner/cats/:id', (deleteCat))
+  .delete('/users/:owner/cats/:id', deleteCat)
+  ////// user's group
+  // .get(   '/users/:username/groups', getGroup)
+  .post(  '/users/:username/groups', postUser) // TODO enforce isGroup Prop to be true and the user included
+  .delete('/users/:username/groups/:groupname', deleteGroup)
   .use((_0, res, _2) => {
-    res.status(404).json({ message: 'resource not found.' })
+    res.status(404).json({ message: 'endpoint not found.' })
   })
 
 app.listen(3001, () => {

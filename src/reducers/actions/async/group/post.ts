@@ -7,11 +7,12 @@ export enum Types {
 }
 
 export interface Payload {
-  username: string,
-  groupname: string,
+  username    : string,
+  groupname   : string,
+  displayName : string,
 }
 
-export const postGroup: ActionCreator<Types, Payload> = (username: string, groupname: string) => ({
+export const postGroup: ActionCreator<Types, Payload> = (username: string, groupname: string, displayName: string) => ({
   type    : Types.REQUEST,
-  payload : { username, groupname },
+  payload : { username, groupname, displayName },
 })

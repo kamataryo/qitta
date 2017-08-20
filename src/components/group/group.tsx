@@ -14,18 +14,22 @@ interface OwnProps extends PureOwnProps, ConnectedProps {}
 
 const Group = (props: OwnProps) => {
 
-  const { group } = props
+  const { group, username } = props
+  const unregister = () => props.unregister(group.groupName, username)
 
   return (
     <div className={ 'group' }>
       <h3>{ group.displayName }</h3>
       <ul className={ 'members' }>
-        { group.members.map((username: string) => (
-          <li key={ `${group.groupName}-${username}` }>
-            <span>{ username }</span>
+        { group.members.map((membername: string) => (
+          <li key={ `${group.groupName}-${membername}` }>
+            <span>{ membername }</span>
           </li>
         )) }
       </ul>
+      <button onClick={ unregister }>
+        { 'このグループの登録を解除する' }
+      </button>
     </div>
   )
 

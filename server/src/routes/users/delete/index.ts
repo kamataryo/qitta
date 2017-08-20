@@ -3,13 +3,12 @@ import { User } from '../../../models'
 import UserDocument from '../../../types/userdoc'
 import { UserResponse } from '../../../../../src/types/user'
 
-const postUsers = (req: Request, res: Response, filter?: object) => {
+const deleteUser = (req: Request, res: Response, filter?: object) => {
 
-  const paramFilter = { ...req.body, ...filter }
+  const paramFilter = { ...req.params, ...filter }
 
-  new User(paramFilter).save()
+  User.remove(paramFilter)
     .catch((__0: Error) => {
-      console.log(__0)
       // log here
       res
         .status(400)
@@ -40,4 +39,4 @@ const postUsers = (req: Request, res: Response, filter?: object) => {
     })
 }
 
-export default postUsers
+export default deleteUser

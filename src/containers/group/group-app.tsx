@@ -11,7 +11,7 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
-  register: (username: string, groupname: string) => void
+  register: (username: string, groupname: string, displayName: string) => void
 }
 
 interface AntiStateProps {
@@ -21,7 +21,7 @@ interface AntiStateProps {
 }
 
 interface AntiDispatchProps {
-  register?: (username: string, groupname: string) => void,
+  register?: (username: string, groupname: string, displayName: string) => void,
 }
 
 type AllProps = PureOwnProps|AntiStateProps|AntiDispatchProps
@@ -37,7 +37,7 @@ const mapStateToProps: MapStateToProps = state => {
 
 const mapDispatchToProps: MapDispatchToProps = dispatch => {
   return ({
-    register: (username, groupname) => dispatch(postGroup(username, groupname)),
+    register: (username, groupname, displayName) => dispatch(postGroup(username, groupname, displayName)),
   })
 }
 
