@@ -2,7 +2,12 @@ import { Request, Response } from 'express'
 import { Cat } from '../../../models'
 import CatDocument from '../../../types/catdoc'
 
-const deleteCat = (req: Request, res: Response) => {
+export interface DeleteCatResponse {
+  id: string,
+  name: string,
+}
+
+const deleteCatRoute = (req: Request, res: Response) => {
 
   const filter = { ...req.params }
 
@@ -22,7 +27,10 @@ const deleteCat = (req: Request, res: Response) => {
       return Cat.find(filter)
     })
     .then((cats: CatDocument[]) => {
-      const result = cats.map(cat => ({ id: cat._id, name: cat.name }))
+      const result: DeleteCatResponse[] = cats.map(cat => ({
+        id   : cat._id,
+        name : cat.name,
+      }))
       res
         .status(200)
         .json(result)
@@ -35,4 +43,4 @@ const deleteCat = (req: Request, res: Response) => {
     })
 }
 
-export default deleteCat
+export default deleteCatRoute

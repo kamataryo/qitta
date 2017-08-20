@@ -5,6 +5,7 @@ import { Route } from 'react-router'
 import { ConnectedRouter } from 'react-router-redux'
 
 import Header from 'layouts/header'
+import LoginView from 'routes/login-view'
 import TaskView from 'routes/task-view'
 import GroupView from 'routes/group-view'
 import CatView from 'routes/cat-view'
@@ -17,6 +18,7 @@ const Routes = () => {
       <ConnectedRouter history={ history }>
         <div>
           <Header />
+          <Route path={ '/login' } component={ LoginView } />
           <Route path={ '/:user/tasks' } component={ TaskView } />
           <Route path={ '/:user/groups' } component={ GroupView } />
           <Route path={ '/:user/cats' } component={ CatView } />
