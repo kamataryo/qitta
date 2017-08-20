@@ -34,19 +34,19 @@ module.exports = {
       path.resolve(__dirname, 'src'),
       'node_modules',
     ],
-    extensions: ['.js', '.ts', '.jsx', '.tsx', '.json'],
+    extensions: ['.js', '.ts', '.jsx', '.tsx', '.json', '.styl'],
   },
 
   module: {
     rules: [
       {
         test: /.tsx?$/,
-        use: [{ loader: 'ts-loader' }]
+        use: [{ loader: 'ts-loader' }],
       },
-      // {
-      //   test: /\.css$/,
-      //   use: ['style-loader', 'css-loader']
-      // }
+      {
+        test: /\.styl$/,
+        loader: 'style-loader!css-loader!stylus-loader',
+      },
     ]
 
   },

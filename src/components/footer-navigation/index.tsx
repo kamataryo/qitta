@@ -1,5 +1,6 @@
 import * as React from 'react'
 import ActiveLink from 'containers/active-link'
+import './style'
 
 const Navigation = () => {
   return (
