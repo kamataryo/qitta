@@ -32,29 +32,31 @@ export default class ProfileApp extends React.Component<OwnProps, OwnState> {
 
     return (
       <div id={ 'profile-app' }>
-        <h2>{ 'profile app' }</h2>
+        <h2>{ 'プロフィール' }</h2>
         <Profile
           profile={ profile }
           cats={ cats }
           groups={ groups }
         />
-        <input
-          type={ 'text' }
-          value={ username }
-          placeholder={ '(username)' }
-          onChange={ onTextChange }
-        />
-        <button onClick={ fetchUser }>{ 'get profile' }</button>
-        <pre>
-          <h3>examples of username</h3>
-          <ul>
-            <li>salamdner</li>
-            <li>kamataryo</li>
-            <li>kamata-family</li>
-            <li>sharehouse-catty</li>
-            <li>mackerel</li>
-          </ul>
-        </pre>
+        <div>
+          <input
+            type={ 'text' }
+            value={ username }
+            placeholder={ '(username)' }
+            onChange={ onTextChange }
+          />
+          <button onClick={ fetchUser }>{ '簡易ログイン' }</button>
+          <pre>
+            <h3>{ '以下のユーザー名を入れてください' }</h3>
+            <ul>
+              <li>salamdner</li>
+              <li>kamataryo</li>
+              <li>kamata-family</li>
+              <li>sharehouse-catty</li>
+              <li>mackerel</li>
+            </ul>
+          </pre>
+        </div>
       </div>
     )
   }

@@ -72,11 +72,13 @@ export default class GroupApp extends React.Component<OwnProps, OwnState> {
           type={ 'text' }
           value={ newGroup.name }
           onChange={ this.onNewGroupNameChange }
+          placeholder={ '(slug)' }
         />
         <input
           type={ 'text' }
           value={ newGroup.displayName }
           onChange={ this.onNewGroupDisplayNameChange }
+          placeholder={ '(表示する名前)' }
         />
         <button onClick={ this.onRegisterClick }>
           { '所属' }

@@ -1,14 +1,14 @@
 import * as React from 'react'
-import ActiveLink from '../containers/active-link'
+import ActiveLink from 'containers/active-link'
 
 const Navigation = () => {
   return (
-    <nav className={ 'navigation' } role={ 'nav' }>
-      <ul>
-        <li><ActiveLink to={ '/user/tasks' }>{ 'tasks' }</ActiveLink></li>
-        <li><ActiveLink to={ '/user/groups' }>{ 'groups' }</ActiveLink></li>
-        <li><ActiveLink to={ '/user/cats' }>{ 'cats' }</ActiveLink></li>
-        <li><ActiveLink to={ '/user/profile' }>{ 'profile' }</ActiveLink></li>
+    <nav className={ 'footer-navigation navigation' } role={ 'nav' }>
+      <ul className={ 'navigation-items' }>
+        <li className={ 'navigation-item' }><ActiveLink to={ '/user/tasks' }>{ 'tasks' }</ActiveLink></li>
+        <li className={ 'navigation-item' }><ActiveLink to={ '/user/groups' }>{ 'groups' }</ActiveLink></li>
+        <li className={ 'navigation-item' }><ActiveLink to={ '/user/cats' }>{ 'cats' }</ActiveLink></li>
+        <li className={ 'navigation-item' }><ActiveLink to={ '/user/profile' }>{ 'profile' }</ActiveLink></li>
       </ul>
     </nav>
   )
