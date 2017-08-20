@@ -12,6 +12,7 @@
 
 - Node.js >= 4
 - Docker
+- Docker Compose
 
 ## Getting started
 
