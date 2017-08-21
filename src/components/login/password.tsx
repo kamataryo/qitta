@@ -2,10 +2,10 @@ import * as React from 'react'
 
 interface OwnProps {
   value: string,
-  onChange: (username: string) => void,
+  onChange: (password: string) => void,
 }
 
-const Username = (props: OwnProps) => {
+const Password = (props: OwnProps) => {
   const {
     value,
   } = props
@@ -17,10 +17,10 @@ const Username = (props: OwnProps) => {
 
   return (
     <dl>
-      <dt>{ 'ユーザー名' }</dt>
+      <dt>{ 'パスワード' }</dt>
       <dd>
         <input
-          type={ 'text' }
+          type={ 'password' }
           value={ value }
           onChange={ onChange }
         />
@@ -29,4 +29,4 @@ const Username = (props: OwnProps) => {
   )
 }
 
-export default Username
+export default Password

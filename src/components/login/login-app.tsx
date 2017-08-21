@@ -1,8 +1,8 @@
 import * as React from 'react'
 import Uesrname from './username'
-// import Password from './password'
+import Password from './password'
 
-interface PureProps {}
+export interface PureOwnProps {}
 
 interface ConnectedProps {
   username: string,
@@ -11,7 +11,7 @@ interface ConnectedProps {
   onPasswordChange : (password: string) => void,
 }
 
-interface OwnProps extends PureProps, ConnectedProps {}
+interface OwnProps extends PureOwnProps, ConnectedProps {}
 
 export default class LoginApp extends React.Component<OwnProps> {
 
@@ -19,15 +19,15 @@ export default class LoginApp extends React.Component<OwnProps> {
 
     const {
       username,
-      // password,
+      password,
       onUsernameChange,
-      // onPasswordChange,
+      onPasswordChange,
     } = this.props
 
     return (
       <div>
         <Uesrname value={ username } onChange={ onUsernameChange } />
-        { /*<Password value={ password } onChange={ onPasswordChange } />*/ }
+        <Password value={ password } onChange={ onPasswordChange } />
       </div>
     )
   }

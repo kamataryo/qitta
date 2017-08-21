@@ -1,11 +1,11 @@
 import * as React from 'react'
-// import LoginApp from 'components/login/login-app'
+import LoginApp from 'containers/login/login-app'
 
 const LoginView = () => {
   return (
     <div id={ 'login-view' }>
       <h1>{ 'Login View' }</h1>
-      { /*<LoginApp />*/ }
+      <LoginApp />
     </div>
   )
 }
