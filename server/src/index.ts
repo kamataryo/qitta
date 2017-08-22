@@ -2,6 +2,7 @@ import * as express from 'express'
 import * as bodyParser from 'body-parser'
 import mongoose = require('mongoose')
 
+import login from './routes/login'
 import postCats from './routes/cats/post'
 import getCats from './routes/cats/get/plural'
 import getCat from './routes/cats/get/singular'
@@ -43,6 +44,7 @@ app
   })
   // endpoints
   .get('/', (_0, res) => res.status(200).json({ message: 'OK' }))
+  .post(   '/login',    login)
   //// cat
   .post(  '/cats',     postCats)
   .get(   '/cats',     getCats)

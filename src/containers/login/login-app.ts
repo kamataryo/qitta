@@ -3,6 +3,7 @@ import { Dispatch } from 'redux'
 import { RootState } from 'store'
 import LoginApp, { PureOwnProps } from 'components/login/login-app'
 import { creator as actionCreator } from 'reducers/login/action/creators'
+import { requestLogin } from 'reducers/actions/async/login'
 
 export interface StateProps {
   username : string,
@@ -12,6 +13,7 @@ export interface StateProps {
 export interface DispatchProps {
   onUsernameChange : (username: string) => void,
   onPasswordChange : (password: string) => void,
+  onLoginClick     : (username: string, password: string) => void,
 }
 
 interface AntiStateProps {
@@ -22,10 +24,11 @@ interface AntiStateProps {
 interface AntiDispatchProps {
   onUsernameChange? : (username: string) => void,
   onPasswordChange? : (password: string) => void,
+  onLoginClick?     : (username: string, password: string) => any,
 }
 
 type AllProps = PureOwnProps|AntiStateProps|AntiDispatchProps
-type MapStateToProps = (State: RootState) => StateProps
+type MapStateToProps = (State: RootState, props?: PureOwnProps) => StateProps
 type MapDispatchToProps = (Dispatch: Dispatch<{}>, Props?: PureOwnProps) => DispatchProps
 
 const mapStateToProps: MapStateToProps = state => {
@@ -39,6 +42,7 @@ const mapDispatchToProps: MapDispatchToProps = dispatch => {
   return ({
     onUsernameChange : username => dispatch(actionCreator.updateUsername(username)),
     onPasswordChange : password => dispatch(actionCreator.updatePassword(password)),
+    onLoginClick     : (username: string, password: string) => dispatch(requestLogin(username, password)),
   })
 }
 
