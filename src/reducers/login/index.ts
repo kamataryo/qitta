@@ -20,6 +20,9 @@ const profileReducer: ProfileReducer<LoginState> = (state: LoginState = initialS
       const password = action.payload.password
       return update(state, { data: { password: { $set: password } } })
 
+    case Types.Logout:
+      return state
+
     default:
       return state
   }

@@ -11,6 +11,13 @@ export interface PasswordUpdateAction extends Action {
   payload : { password: string },
 }
 
-type Actions = UsernameUpdateAction|PasswordUpdateAction
+export interface LogoutAction extends Action {
+  type: Types.Logout,
+}
+
+type Actions =
+  UsernameUpdateAction|
+  PasswordUpdateAction|
+  LogoutAction
 
 export default Actions

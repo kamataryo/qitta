@@ -18,8 +18,8 @@ export default (req: Request, res: Response) => {
           .send({ accessToken: 'some token' })
       } else {
         res
-          .status(400)
-          .send({ message: 'login error' })
+          .status(401)
+          .send({ message: 'authentication failed' })
       }
     })
     .catch((_0: Error) => {

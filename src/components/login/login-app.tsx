@@ -36,6 +36,16 @@ export default class LoginApp extends React.Component<OwnProps> {
         <LoginButton onClick={ onClick }>
           { 'ログイン' }
         </LoginButton>
+        <pre>
+          <h3>{ '以下のユーザー名を入れてください' }</h3>
+          <ul>
+            <li>salamdner</li>
+            <li>kamataryo</li>
+            <li>kamata-family</li>
+            <li>sharehouse-catty</li>
+            <li>mackerel</li>
+          </ul>
+        </pre>
       </div>
     )
   }

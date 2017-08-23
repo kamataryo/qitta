@@ -3,7 +3,7 @@ import * as React from 'react'
 export default () => {
   return (
     <header>
-      <h1>{ '(ヘッダテキスト)' }</h1>
+      <h1>{ 'QITTA' }</h1>
     </header>
   )
 }

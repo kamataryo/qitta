@@ -1,5 +1,9 @@
 import { Types } from './types'
-import { UsernameUpdateAction, PasswordUpdateAction } from '.'
+import {
+  UsernameUpdateAction,
+  PasswordUpdateAction,
+  LogoutAction,
+} from '.'
 
 export const creator = {
   updateUsername: (username: string): UsernameUpdateAction => ({
@@ -9,5 +13,8 @@ export const creator = {
   updatePassword: (password: string): PasswordUpdateAction => ({
     type: Types.UpdatePassword,
     payload: { password },
+  }),
+  logout: (): LogoutAction => ({
+    type: Types.Logout,
   }),
 }
