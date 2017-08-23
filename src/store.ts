@@ -44,4 +44,8 @@ const rootStore = createStore(
 
 sagaMiddleWare.run(rootSaga as any) // TODO: type error
 
+// TODO: Embed __VERSION__ and __COMMITHASH__ into `meta State`
+declare const __VERSION__: string
+console.log(__VERSION__)
+
 export default rootStore

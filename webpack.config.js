@@ -2,6 +2,8 @@ const path              = require('path')
 const webpack           = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const GitRevisionPlugin = require('git-revision-webpack-plugin')
+const gitRevisionPlugin = new GitRevisionPlugin()
 
 module.exports = {
 
@@ -66,7 +68,9 @@ module.exports = {
     }),
 
     new webpack.DefinePlugin({
-      __PROD__: process.env.NODE_ENV === 'production',
+      __PROD__       : process.env.NODE_ENV === 'production',
+      __VERSION__    : JSON.stringify(gitRevisionPlugin.version()),
+      __COMMITHASH__ : JSON.stringify(gitRevisionPlugin.commithash()),
     }),
 
     new CopyWebpackPlugin([
