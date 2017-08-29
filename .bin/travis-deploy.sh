@@ -18,7 +18,7 @@ cd dist
 git init
 git config user.name 'kamataryo@travis'
 git config user.email "kamataryo@users.noreply.github.com"
-git remote add origin git@github.com:kamataryo/qitta.git
+git remote add origin git@github.com:octopoda-org/qitta.git
 
 git checkout -b gh-pages
 git add .

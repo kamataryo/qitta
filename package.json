@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kamataryo/qitta.git"
+    "url": "git+https://github.com/octopoda-org/qitta.git"
   },
   "author": "kamataryo <mugil.cephalus+github.com@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kamataryo/qitta/issues"
+    "url": "https://github.com/octopoda-org/qitta/issues"
   },
-  "homepage": "https://github.com/kamataryo/qitta#readme",
+  "homepage": "https://github.com/octopoda-org/qitta#readme",
   "nyc": {
     "include": [
       "src/*.ts",
